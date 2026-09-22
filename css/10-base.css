@@ -41,7 +41,10 @@
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 
   --r:2px;              /* sengaja hampir kotak */
-  --gutter:clamp(18px,4vw,34px);
+  /* gutter = TANGGA px, bukan clamp(vw). clamp membuat gutter pecahan di
+     lebar tengah (mis. 4vw=30.4px di 760px), jadi tidak ada dua lebar layar
+     pun yang punya tepi kiri yang sama persis. Tangga px selalu bulat. */
+  --gutter:16px;
   --maxw:1180px;
 
   --hair:1px solid var(--rule);
@@ -70,6 +73,9 @@
   --s-6:24px;
   --s-8:32px;
   --s-10:40px;
+  --s-12:48px;   /* dipakai .section: dulu clamp(48px,6vw,84px) -> 80.6px di 1440px */
+  --s-16:64px;
+  --s-20:80px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -113,7 +119,7 @@ figure{margin:0}
      lebih kiri/kanan dari section lain (bug 22px di versi sebelumnya). */
   padding-inline:var(--gutter);
 }
-.section{padding-block:clamp(48px,6vw,84px)}
+.section{padding-block:var(--s-12)}
 /* lompat ke #anchor tidak boleh menyisakan judul mepet di bawah baris atas
    yang sticky (terukur clearance cuma 19px tanpa ini) */
 [id]{scroll-margin-top:88px}
@@ -139,7 +145,7 @@ figure{margin:0}
 .section--band .eyebrow{color:var(--green-l)}
 
 /* judul section: label mono di atas, judul, lalu aturan penuh */
-.shead{display:grid;gap:var(--s-2);padding-bottom:var(--s-4);border-bottom:var(--hair);margin-bottom:clamp(24px,3vw,40px)}
+.shead{display:grid;gap:var(--s-2);padding-bottom:var(--s-4);border-bottom:var(--hair);margin-bottom:var(--s-6)}
 .shead__row{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s-2) var(--s-4);justify-content:space-between}
 .shead p{max-width:56ch}
 
@@ -181,9 +187,11 @@ figure{margin:0}
 .skip:focus{left:12px;top:12px;z-index:50;background:var(--ink);color:#fff;padding:12px 16px;border-radius:var(--r)}
 
 /* tangga tipe: setiap langkah px bulat, tanpa interpolasi vw */
-@media (min-width:480px){:root{--fs-h1:34px;--lh-h1:40px;--fs-h2:28px;--lh-h2:34px}}
-@media (min-width:760px){:root{--fs-h1:40px;--lh-h1:46px;--fs-h2:30px;--lh-h2:36px}}
-@media (min-width:1080px){:root{--fs-h1:46px;--lh-h1:52px;--fs-h2:32px;--lh-h2:38px}}
+@media (min-width:480px){:root{--fs-h1:34px;--lh-h1:40px;--fs-h2:28px;--lh-h2:34px;--gutter:24px}}
+@media (min-width:760px){:root{--fs-h1:40px;--lh-h1:46px;--fs-h2:30px;--lh-h2:36px;--gutter:28px}}
+@media (min-width:760px){.section{padding-block:var(--s-16)}.shead{margin-bottom:var(--s-8)}}
+@media (min-width:1080px){:root{--fs-h1:46px;--lh-h1:52px;--fs-h2:32px;--lh-h2:38px;--gutter:32px}}
+@media (min-width:1080px){.section{padding-block:var(--s-20)}.shead{margin-bottom:var(--s-10)}}
 @media (min-width:1400px){:root{--fs-h1:52px;--lh-h1:58px;--fs-h2:34px;--lh-h2:40px}}
 
 @media (prefers-reduced-motion:reduce){

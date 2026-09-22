@@ -5,12 +5,12 @@
    hairline, tanpa bayangan, tanpa kartu melayang.
    ============================================================ */
 
-.cat__grid{display:grid;gap:clamp(20px,2.6vw,40px);align-items:start}
+.cat__grid{display:grid;gap:var(--s-6);align-items:start}
 /* grid item default min-width:auto -> tidak bisa mengecil di bawah min-content,
    itu yang bikin kisi produk melar 36px di viewport 320px */
 .cat__grid>*{min-width:0}
 @media (min-width:960px){
-  .cat__grid{grid-template-columns:216px minmax(0,1fr)}
+  .cat__grid{grid-template-columns:216px minmax(0,1fr);gap:var(--s-10)}
 }
 
 /* --- rail filter ------------------------------------------------- */
@@ -42,7 +42,13 @@
     grid-auto-flow:column;grid-auto-columns:max-content;
     border-top:0;gap:0 var(--s-6);
     overflow-x:auto;scrollbar-width:none;
+    /* tanpa snap, posisi berhenti setelah digeser bisa mendarat di tengah kata
+       (terukur: "Obat Bebas" terpotong jadi "Obat Beba"). proximity, bukan
+       mandatory: mandatory bisa mentok di ujung kanan dan tetap berhenti
+       di tengah item terakhir. */
+    scroll-snap-type:x proximity;
   }
+  .rail__list button{scroll-snap-align:start}
   .rail__list::-webkit-scrollbar{display:none}
   .rail__list button{border-bottom:0;border-top:2px solid transparent;min-height:44px}
   .rail__list button[aria-pressed="true"]{box-shadow:none;padding-left:2px;border-top-color:var(--green)}
@@ -102,20 +108,22 @@
 .pcard__nama{font-size:var(--fs-card);font-weight:600;line-height:24px;overflow-wrap:anywhere}
 .pcard__desc{font-size:var(--fs-sm);color:var(--muted);line-height:21px}
 .pcard__foot{
-  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;
   gap:var(--s-2) var(--s-3);
-  margin-top:auto;padding-top:var(--s-3);border-top:var(--hair);min-width:0;
+  margin-top:auto;padding-top:var(--s-2);border-top:var(--hair);min-width:0;
 }
 .pcard__harga{font-family:var(--mono);font-size:var(--fs-body);font-weight:600}
-.pcard__acts{display:inline-flex;align-items:baseline;gap:var(--s-4);flex-wrap:wrap;justify-content:flex-end;min-width:0}
+.pcard__acts{display:inline-flex;align-items:center;gap:var(--s-4);flex-wrap:wrap;justify-content:flex-end;min-width:0}
 .pcard__more{
-  display:inline-flex;align-items:center;min-height:28px;
-  background:none;border:0;padding:0;cursor:pointer;
+  /* 44px: target sentuh minimum. padding-block, bukan min-height saja, supaya
+     teks benar-benar di tengah kotak 44px (bukan menempel di atas). */
+  display:inline-flex;align-items:center;min-height:44px;padding-block:9px;
+  background:none;border:0;padding-inline:0;cursor:pointer;
   font-size:var(--fs-sm);color:var(--muted);border-bottom:1px dotted var(--rule-2);
 }
 .pcard__more:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .pcard__cta{
-  display:inline-flex;align-items:center;min-height:28px;
+  display:inline-flex;align-items:center;min-height:44px;padding-block:9px;
   font-size:var(--fs-sm);font-weight:600;color:var(--green);text-decoration:none;
   border-bottom:1px solid currentColor;
 }

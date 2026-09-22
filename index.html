@@ -88,7 +88,10 @@
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 
   --r:2px;              /* sengaja hampir kotak */
-  --gutter:clamp(18px,4vw,34px);
+  /* gutter = TANGGA px, bukan clamp(vw). clamp membuat gutter pecahan di
+     lebar tengah (mis. 4vw=30.4px di 760px), jadi tidak ada dua lebar layar
+     pun yang punya tepi kiri yang sama persis. Tangga px selalu bulat. */
+  --gutter:16px;
   --maxw:1180px;
 
   --hair:1px solid var(--rule);
@@ -117,6 +120,9 @@
   --s-6:24px;
   --s-8:32px;
   --s-10:40px;
+  --s-12:48px;   /* dipakai .section: dulu clamp(48px,6vw,84px) -> 80.6px di 1440px */
+  --s-16:64px;
+  --s-20:80px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -160,7 +166,7 @@ figure{margin:0}
      lebih kiri/kanan dari section lain (bug 22px di versi sebelumnya). */
   padding-inline:var(--gutter);
 }
-.section{padding-block:clamp(48px,6vw,84px)}
+.section{padding-block:var(--s-12)}
 /* lompat ke #anchor tidak boleh menyisakan judul mepet di bawah baris atas
    yang sticky (terukur clearance cuma 19px tanpa ini) */
 [id]{scroll-margin-top:88px}
@@ -186,7 +192,7 @@ figure{margin:0}
 .section--band .eyebrow{color:var(--green-l)}
 
 /* judul section: label mono di atas, judul, lalu aturan penuh */
-.shead{display:grid;gap:var(--s-2);padding-bottom:var(--s-4);border-bottom:var(--hair);margin-bottom:clamp(24px,3vw,40px)}
+.shead{display:grid;gap:var(--s-2);padding-bottom:var(--s-4);border-bottom:var(--hair);margin-bottom:var(--s-6)}
 .shead__row{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s-2) var(--s-4);justify-content:space-between}
 .shead p{max-width:56ch}
 
@@ -228,9 +234,11 @@ figure{margin:0}
 .skip:focus{left:12px;top:12px;z-index:50;background:var(--ink);color:#fff;padding:12px 16px;border-radius:var(--r)}
 
 /* tangga tipe: setiap langkah px bulat, tanpa interpolasi vw */
-@media (min-width:480px){:root{--fs-h1:34px;--lh-h1:40px;--fs-h2:28px;--lh-h2:34px}}
-@media (min-width:760px){:root{--fs-h1:40px;--lh-h1:46px;--fs-h2:30px;--lh-h2:36px}}
-@media (min-width:1080px){:root{--fs-h1:46px;--lh-h1:52px;--fs-h2:32px;--lh-h2:38px}}
+@media (min-width:480px){:root{--fs-h1:34px;--lh-h1:40px;--fs-h2:28px;--lh-h2:34px;--gutter:24px}}
+@media (min-width:760px){:root{--fs-h1:40px;--lh-h1:46px;--fs-h2:30px;--lh-h2:36px;--gutter:28px}}
+@media (min-width:760px){.section{padding-block:var(--s-16)}.shead{margin-bottom:var(--s-8)}}
+@media (min-width:1080px){:root{--fs-h1:46px;--lh-h1:52px;--fs-h2:32px;--lh-h2:38px;--gutter:32px}}
+@media (min-width:1080px){.section{padding-block:var(--s-20)}.shead{margin-bottom:var(--s-10)}}
 @media (min-width:1400px){:root{--fs-h1:52px;--lh-h1:58px;--fs-h2:34px;--lh-h2:40px}}
 
 @media (prefers-reduced-motion:reduce){
@@ -250,11 +258,11 @@ figure{margin:0}
   border-bottom:var(--hair);
 }
 .masthead__in{
-  display:flex;align-items:center;gap:clamp(10px,2vw,28px);
+  display:flex;align-items:center;gap:var(--s-3);
   min-height:64px;
   padding-block:var(--s-2);
 }
-.brand{display:flex;align-items:center;gap:var(--s-3);text-decoration:none;margin-right:auto}
+.brand{display:flex;align-items:center;gap:var(--s-3);text-decoration:none;margin-right:auto;min-height:44px}
 .brand__mark{
   display:grid;place-items:center;flex:0 0 auto;
   width:40px;height:40px;border-radius:var(--r);
@@ -265,9 +273,10 @@ figure{margin:0}
 .brand__txt b{font-size:var(--fs-body);letter-spacing:-.02em}
 .brand__txt span{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
-.navlinks{display:flex;gap:clamp(12px,1.6vw,24px);align-items:center}
+.navlinks{display:flex;gap:var(--s-6);align-items:center}
 .navlinks a{
   text-decoration:none;font-size:var(--fs-sm);font-weight:500;color:var(--ink-2);
+  display:inline-flex;align-items:center;min-height:44px;
   padding-block:var(--s-1);border-bottom:1px solid transparent;
 }
 .navlinks a:hover{color:var(--ink);border-bottom-color:var(--ink)}
@@ -280,8 +289,8 @@ figure{margin:0}
 .status.is-closed .status__dot{background:#a8442f}
 
 /* --- blok pembuka ------------------------------------------------ */
-.open{padding-block:clamp(28px,3.2vw,44px) clamp(28px,3.4vw,48px)}
-.open__grid{display:grid;gap:clamp(24px,3vw,44px);align-items:start}
+.open{padding-block:var(--s-8) var(--s-10)}
+.open__grid{display:grid;gap:var(--s-6);align-items:start}
 @media (min-width:900px){
   .open__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
 }
@@ -306,7 +315,7 @@ figure{margin:0}
 .board__head{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-4);border-bottom:var(--hair)}
 .board__body{padding:var(--s-4)}
 .board__cats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:var(--hair)}
-.board__cats span{background:var(--card);padding:10px 12px;font-size:var(--fs-sm);display:flex;justify-content:space-between;gap:var(--s-2);align-items:baseline}
+.board__cats span{background:var(--card);padding:var(--s-3);font-size:var(--fs-sm);display:flex;justify-content:space-between;gap:var(--s-2);align-items:baseline}
 .board__cats b{font-family:var(--mono);font-size:var(--fs-meta);color:var(--green)}
 .board__shots{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin-top:var(--s-4)}
 .board__shots img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r);border:var(--hair)}
@@ -314,7 +323,7 @@ figure{margin:0}
 
 /* baris fakta penuh lebar di bawah blok pembuka */
 .strip{border-block:var(--hair);background:var(--card)}
-.strip__in{display:flex;flex-wrap:wrap;gap:var(--s-2) clamp(18px,3vw,40px);padding-block:var(--s-3);align-items:baseline}
+.strip__in{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-10);padding-block:var(--s-3);align-items:baseline}
 .strip__in span{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
 .strip__in b{color:var(--ink)}
 
@@ -326,6 +335,9 @@ figure{margin:0}
 @media (max-width:880px){
   .navlinks{display:none}
 }
+/* jarak antar blok pembuka ikut tangga px yang sama */
+@media (min-width:760px){.open{padding-block:var(--s-10) var(--s-12)}.open__grid{gap:var(--s-8)}}
+@media (min-width:1080px){.open__grid{gap:var(--s-10)}}
 @media (max-width:560px){
   .brand__txt span{display:none}
   .masthead__cta .btn--ghost{display:none}
@@ -346,12 +358,12 @@ figure{margin:0}
    hairline, tanpa bayangan, tanpa kartu melayang.
    ============================================================ */
 
-.cat__grid{display:grid;gap:clamp(20px,2.6vw,40px);align-items:start}
+.cat__grid{display:grid;gap:var(--s-6);align-items:start}
 /* grid item default min-width:auto -> tidak bisa mengecil di bawah min-content,
    itu yang bikin kisi produk melar 36px di viewport 320px */
 .cat__grid>*{min-width:0}
 @media (min-width:960px){
-  .cat__grid{grid-template-columns:216px minmax(0,1fr)}
+  .cat__grid{grid-template-columns:216px minmax(0,1fr);gap:var(--s-10)}
 }
 
 /* --- rail filter ------------------------------------------------- */
@@ -383,7 +395,13 @@ figure{margin:0}
     grid-auto-flow:column;grid-auto-columns:max-content;
     border-top:0;gap:0 var(--s-6);
     overflow-x:auto;scrollbar-width:none;
+    /* tanpa snap, posisi berhenti setelah digeser bisa mendarat di tengah kata
+       (terukur: "Obat Bebas" terpotong jadi "Obat Beba"). proximity, bukan
+       mandatory: mandatory bisa mentok di ujung kanan dan tetap berhenti
+       di tengah item terakhir. */
+    scroll-snap-type:x proximity;
   }
+  .rail__list button{scroll-snap-align:start}
   .rail__list::-webkit-scrollbar{display:none}
   .rail__list button{border-bottom:0;border-top:2px solid transparent;min-height:44px}
   .rail__list button[aria-pressed="true"]{box-shadow:none;padding-left:2px;border-top-color:var(--green)}
@@ -443,20 +461,22 @@ figure{margin:0}
 .pcard__nama{font-size:var(--fs-card);font-weight:600;line-height:24px;overflow-wrap:anywhere}
 .pcard__desc{font-size:var(--fs-sm);color:var(--muted);line-height:21px}
 .pcard__foot{
-  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;
   gap:var(--s-2) var(--s-3);
-  margin-top:auto;padding-top:var(--s-3);border-top:var(--hair);min-width:0;
+  margin-top:auto;padding-top:var(--s-2);border-top:var(--hair);min-width:0;
 }
 .pcard__harga{font-family:var(--mono);font-size:var(--fs-body);font-weight:600}
-.pcard__acts{display:inline-flex;align-items:baseline;gap:var(--s-4);flex-wrap:wrap;justify-content:flex-end;min-width:0}
+.pcard__acts{display:inline-flex;align-items:center;gap:var(--s-4);flex-wrap:wrap;justify-content:flex-end;min-width:0}
 .pcard__more{
-  display:inline-flex;align-items:center;min-height:28px;
-  background:none;border:0;padding:0;cursor:pointer;
+  /* 44px: target sentuh minimum. padding-block, bukan min-height saja, supaya
+     teks benar-benar di tengah kotak 44px (bukan menempel di atas). */
+  display:inline-flex;align-items:center;min-height:44px;padding-block:9px;
+  background:none;border:0;padding-inline:0;cursor:pointer;
   font-size:var(--fs-sm);color:var(--muted);border-bottom:1px dotted var(--rule-2);
 }
 .pcard__more:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .pcard__cta{
-  display:inline-flex;align-items:center;min-height:28px;
+  display:inline-flex;align-items:center;min-height:44px;padding-block:9px;
   font-size:var(--fs-sm);font-weight:600;color:var(--green);text-decoration:none;
   border-bottom:1px solid currentColor;
 }
@@ -533,8 +553,8 @@ figure{margin:0}
 /* --- layanan ------------------------------------------------------ */
 .svc__list{border-top:var(--hair)}
 .svc{
-  display:grid;gap:clamp(16px,2vw,32px);align-items:start;
-  padding-block:clamp(20px,2.4vw,32px);
+  display:grid;gap:var(--s-8);align-items:start;
+  padding-block:var(--s-8);
   border-bottom:var(--hair);
 }
 .svc:first-child{border-top:0}
@@ -570,7 +590,7 @@ figure{margin:0}
   display:grid;gap:0;border-top:1px solid var(--ink);
 }
 @media (min-width:760px){
-  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(20px,3vw,40px)}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--s-10)}
 }
 .step{display:grid;gap:var(--s-2);padding-block:var(--s-4);border-bottom:var(--hair)}
 @media (min-width:760px){.step{border-bottom:0;border-top:0}}
@@ -582,9 +602,9 @@ figure{margin:0}
 .step p{color:var(--muted);font-size:var(--fs-sm);line-height:23px}
 
 /* --- kunjungi ----------------------------------------------------- */
-.visit{display:grid;gap:clamp(24px,3vw,44px);align-items:start}
+.visit{display:grid;gap:var(--s-6);align-items:start}
 @media (min-width:900px){
-  .visit{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .visit{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-10)}
 }
 .visit__rows{border-top:1px solid var(--rule-inv);margin-top:var(--s-6)}
 .vrow{display:flex;gap:var(--s-4);padding:var(--s-4) 0;border-bottom:1px solid var(--rule-inv)}
@@ -604,15 +624,15 @@ figure{margin:0}
   filter:grayscale(1) contrast(1.05);   /* peta mengikuti nada halaman, bukan biru bawaan */
 }
 .visit__map figcaption{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-4);justify-content:space-between;font-size:var(--fs-sm);color:var(--muted-inv)}
-.visit__map figcaption a{color:#fff;text-decoration:none;border-bottom:1px solid var(--green-l)}
+.visit__map figcaption a{color:#fff;text-decoration:none;border-bottom:1px solid var(--green-l);display:inline-flex;align-items:center;min-height:44px}
 
 /* --- footer ------------------------------------------------------- */
 .foot{background:var(--band);color:#f2f5f3;border-top:1px solid var(--rule-inv)}
-.foot__in{display:grid;gap:clamp(20px,3vw,40px);padding-block:clamp(28px,3.4vw,44px)}
+.foot__in{display:grid;gap:var(--s-10);padding-block:var(--s-10) var(--s-12)}
 @media (min-width:760px){.foot__in{grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,.9fr))}}
 .foot h4{font-size:var(--fs-micro);font-family:var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--green-l);font-weight:500;margin-bottom:var(--s-3)}
 .foot ul{display:grid;gap:var(--s-1)}
-.foot a{color:var(--muted-inv);text-decoration:none;font-size:var(--fs-sm);display:inline-flex;align-items:center;min-height:28px}
+.foot a{color:var(--muted-inv);text-decoration:none;font-size:var(--fs-sm);display:inline-flex;align-items:center;min-height:44px}
 .foot a:hover{color:#fff}
 .foot__about p{color:var(--muted-inv);font-size:var(--fs-sm);max-width:44ch;margin-top:var(--s-3);line-height:23px}
 .foot__bot{
