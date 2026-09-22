@@ -83,3 +83,9 @@
   font-size:.8rem;color:var(--muted-inv);
 }
 .foot__bot span{font-family:var(--mono);letter-spacing:.03em}
+
+/* tombol WhatsApp mengambang DIHAPUS: baris atas bersifat sticky dan sudah
+   memuat tombol WA yang selalu terlihat, jadi tombol mengambang hanya
+   menduplikasi aksi — sambil menutupi teks di sudut kanan bawah
+   (terukur menutupi 2 elemen di 390px, 1 di 360px, 1 di 1440px).
+   Satu aksi WhatsApp yang selalu terlihat lebih jelas daripada dua. */

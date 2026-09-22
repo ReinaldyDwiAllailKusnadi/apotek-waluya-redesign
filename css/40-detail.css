@@ -29,18 +29,3 @@
 .pdetail__cta{display:grid;gap:8px}
 .pdetail__cta .btn{justify-content:center}
 
-/* tombol WhatsApp mengambang — di mobile jadi bulat 52px, dan blok terakhir
-   halaman diberi padding bawah supaya tidak ada teks yang tertutup */
-.wafloat{
-  position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:40;
-  display:inline-flex;align-items:center;gap:9px;
-  min-height:52px;padding:0 18px;border-radius:var(--r);
-  background:var(--green);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;
-  border:1px solid var(--green-d);
-}
-.wafloat:hover{background:var(--green-d)}
-.wafloat svg{width:21px;height:21px;flex:0 0 auto}
-@media (max-width:600px){
-  .wafloat{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%}
-  .wafloat span{display:none}
-}

@@ -455,22 +455,6 @@ figure{margin:0}
 .pdetail__x:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .pdetail__cta{display:grid;gap:8px}
 .pdetail__cta .btn{justify-content:center}
-
-/* tombol WhatsApp mengambang — di mobile jadi bulat 52px, dan blok terakhir
-   halaman diberi padding bawah supaya tidak ada teks yang tertutup */
-.wafloat{
-  position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:40;
-  display:inline-flex;align-items:center;gap:9px;
-  min-height:52px;padding:0 18px;border-radius:var(--r);
-  background:var(--green);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;
-  border:1px solid var(--green-d);
-}
-.wafloat:hover{background:var(--green-d)}
-.wafloat svg{width:21px;height:21px;flex:0 0 auto}
-@media (max-width:600px){
-  .wafloat{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%}
-  .wafloat span{display:none}
-}
 /* ============================================================
    50-sections.css — layanan, alur, kunjungi, footer
    Layanan = baris editorial bernomor (bukan 3 kartu sejajar).
@@ -556,6 +540,12 @@ figure{margin:0}
   font-size:.8rem;color:var(--muted-inv);
 }
 .foot__bot span{font-family:var(--mono);letter-spacing:.03em}
+
+/* tombol WhatsApp mengambang DIHAPUS: baris atas bersifat sticky dan sudah
+   memuat tombol WA yang selalu terlihat, jadi tombol mengambang hanya
+   menduplikasi aksi — sambil menutupi teks di sudut kanan bawah
+   (terukur menutupi 2 elemen di 390px, 1 di 360px, 1 di 1440px).
+   Satu aksi WhatsApp yang selalu terlihat lebih jelas daripada dua. */
 </style>
 </head>
 <body>
@@ -624,7 +614,7 @@ figure{margin:0}
       <aside class="board" aria-label="Ringkasan isi apotek">
         <div class="board__head">
           <span class="mono-label">Isi rak</span>
-          <span class="mono-label">23 produk</span>
+          <span class="mono-label">23 jenis</span>
         </div>
         <div class="board__body">
           <div class="board__cats"><span>Vitamin & Suplemen <b>3</b></span><span>Obat Bebas <b>3</b></span><span>Alat Kesehatan <b>5</b></span><span>Bayi & Ibu <b>4</b></span><span>Perawatan Kulit <b>3</b></span><span>Higienis & P3K <b>5</b></span></div>
@@ -633,7 +623,7 @@ figure{margin:0}
             <picture><source type="image/webp" srcset="assets/webp/farmasi-obat-480.webp 480w, assets/webp/farmasi-obat-800.webp 800w, assets/webp/farmasi-obat-1200.webp 1200w" sizes="(max-width:900px) 45vw, 240px"><img class="board__img" src="assets/webp/farmasi-obat-800.webp" width="1200" height="1800" alt="Kemasan obat di rak apotek" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAIEAwUGAf/EACAQAAICAgICAwAAAAAAAAAAAAECAAMEEQUSISIUQXH/xAAXAQEAAwAAAAAAAAAAAAAAAAACAAED/8QAGREBAQADAQAAAAAAAAAAAAAAAAECITER/9oADAMBAAIRAxEAPwCBK0r2dgBM+NbXaNowM5vKN2Qp9iV3LnCVvVskn8klirjfHV4yBonmNYq67GIgaLDwlCatEkwFR61ga3IY+X3PVpQys9qLmUj7gmmt22tdrteGY6URKWHlfJYBjoRFBrDiH2Eo8x4yDEQTh3qHH2MtgAPgxERBX//Z);background-size:cover"></picture>
           </div>
         </div>
-        <p class="board__foot">Foto rak kami sendiri — bukan stok foto. Kalau barangnya tidak terlihat, tanya saja.</p>
+        <p class="board__foot">Daftar ini contoh yang paling sering dicari — rak asli jauh lebih banyak. Foto rak kami sendiri, bukan stok foto.</p>
       </aside>
     </div>
   </section>
@@ -1242,10 +1232,6 @@ figure{margin:0}
   </div>
 </footer>
 
-<a class="wafloat" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20bertanya." target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a12 12 0 01-5.9-5.2c-.4-.7-.6-1.5-.4-2.2.1-.5.7-1.4 1.2-1.6.3-.1.6-.1.8.1l.9 1.6c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4-.1.6.4.8 1.4 1.9 2.3 2.4.2.1.5.1.6-.1l.6-.6c.2-.2.4-.3.7-.2l1.6.8c.3.2.4.5.3.8z"/></svg>
-  <span>Chat WhatsApp</span>
-</a>
 
 <dialog class="pdetail" id="detail" aria-labelledby="detailNama">
   <div class="pdetail__in">
