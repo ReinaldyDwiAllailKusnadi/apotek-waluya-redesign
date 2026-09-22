@@ -58,6 +58,24 @@
 .open__lede{margin-top:var(--s-4);max-width:52ch}
 .open__cta{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-6)}
 
+/* Di bawah 430px dua tombol pembuka butuh 370px dari 358px yang tersedia
+   (kelebihan 12px), sehingga "Lihat katalog" terlempar ke baris kedua dan
+   blok CTA melar dari 52px jadi 116px. Padding dalam dirapatkan 20px->16px
+   dan celah 12px->8px supaya keduanya kembali sebaris:
+   216,5 + 8 + 125,7 = 350,2px, muat di 358px. Tinggi tombol tetap 48px. */
+@media (max-width:430px){
+  .open__cta{gap:var(--s-2)}
+  .open__cta .btn{padding-inline:var(--s-4)}
+}
+/* Di bawah 380px dua label tombol butuh 350px sementara ruangnya 328px
+   (360px) sampai 288px (320px) — sebaris memang tidak mungkin tanpa
+   memotong label. Dua baris di sini dibuat penuh lebar supaya terbaca
+   sebagai keputusan, bukan tombol yang terlempar ke baris kedua. */
+@media (max-width:380px){
+  .open__cta{flex-direction:column;align-items:stretch}
+  .open__cta .btn{justify-content:center}
+}
+
 /* pencarian di papan pembuka — di atas lipatan, menyaring katalog yang sama */
 .open__cari{margin-top:var(--s-6);display:grid;gap:var(--s-2);max-width:440px}
 .open__cariNote{font-size:var(--fs-meta);color:var(--muted)}
@@ -78,6 +96,17 @@
 .board__shots{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin-top:var(--s-4)}
 .board__shots img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r);border:var(--hair)}
 .board__foot{padding:var(--s-3) var(--s-4);border-top:var(--hair);font-size:var(--fs-sm);color:var(--muted)}
+
+/* Di bawah 900px papan ini tingginya 540px — 37% dari blok pembuka di HP —
+   dan 180px di antaranya dipakai kisi kategori yang isinya persis sama
+   dengan rail filter di katalog 230px di bawahnya. Yang tersisa di sini
+   adalah dua foto rak, yang memang tidak ada duplikatnya di halaman.
+   Kisi kategori disembunyikan, jarak dalam dirapatkan: 540px -> 352px. */
+@media (max-width:899px){
+  .board__cats{display:none}
+  .board__shots{margin-top:0}
+  .board__foot{font-size:var(--fs-meta)}
+}
 
 /* baris fakta penuh lebar di bawah blok pembuka */
 .strip{border-block:var(--hair);background:var(--card)}
