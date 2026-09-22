@@ -52,9 +52,12 @@ python3 deploy.py            # deploy ke /var/www/apotek2 + verifikasi 200 tiap 
 ## Yang membedakan dari versi lama
 
 - **Katalog jadi halaman utama.** Rail filter menempel di kiri saat scroll;
-  pencarian menyaring nama, kategori, dan kode rak sekaligus.
+  pencarian menyaring nama, kategori, dan kode rak sekaligus. Ada dua kolom cari
+  (papan pembuka + rail) yang **menyaring katalog yang sama** — bukan dua daftar hasil.
 - **Kartu produk = label rak**: kode, nama, isi, harga mono, dua aksi teks.
   Deskripsi lengkap tidak ditaruh di kartu, tapi di panel `<dialog>` "Keterangan".
+- **Tanpa tombol mengambang.** Baris atas *sticky* sudah memuat WhatsApp & Telepon,
+  jadi satu aksi WhatsApp yang selalu terlihat — bukan dua yang saling menutupi.
 - **Jam buka dihitung di zona Asia/Jakarta**, bukan zona waktu pengunjung —
   supaya status "Buka/Tutup" benar untuk siapa pun yang membuka dari luar WIB.
   Kalau hari ini sudah tutup, yang disebut jam buka hari berikutnya
@@ -67,12 +70,20 @@ Semua angka di bawah hasil pengukuran di browser, bukan perkiraan visual.
 
 - **Overflow horizontal: 0px di 19 lebar viewport** (320 → 1920px).
 - **Kontras WCAG AA: 0 pelanggaran** (dihitung dengan komposit alpha).
-- **Ring fokus keyboard: 0 dari 80 elemen interaktif yang tanpa ring.**
+- **Ring fokus keyboard: 0 dari 47 elemen interaktif yang tanpa ring.**
 - **Tepi kiri rata sempurna**: tagline, H1, paragraf, dan judul bagian semua di 156.5px.
+- **Pencarian ada di atas lipatan** — desktop y=536, mobile y=474 (viewport 900/844).
+  Versi lama menaruh input cari di y=402 desktop tapi **y=961 di mobile** (di bawah lipatan).
+- **Nol elemen tertutup** oleh elemen mengambang. Tombol WhatsApp mengambang
+  dihapus karena baris atas *sticky* sudah memuat tombol WA yang selalu terlihat;
+  sebelumnya tombol itu terukur menutupi 2 elemen di 390px, 1 di 360px, 1 di 1440px.
 - **Kartu produk seragam** dalam satu baris (215×429 dan 215×448 — tinggi beda
   karena deskripsi dua baris vs satu baris, bukan karena lebar).
 - **Status jam buka lolos 6/6 kasus** (Selasa pagi/malam, Sabtu pagi/malam,
   Minggu pagi/malam) dengan jam sistem dipalsukan.
+- **Panel keterangan produk terverifikasi**: nama, harga, kategori, isi, dan
+  pesan WhatsApp terisi otomatis ("Halo Apotek Waluya, saya mau tanya stok
+  Paracetamol 500mg (strip (10 tablet)). Apakah tersedia?").
 - Target sentuh: hanya tautan *inline* di dalam kalimat yang di bawah 24px —
   itu pengecualian eksplisit WCAG 2.5.8. Tautan yang berdiri sendiri (footer,
   nav, tombol) semuanya >= 24px.
