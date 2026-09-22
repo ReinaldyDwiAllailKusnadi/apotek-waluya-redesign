@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apotek Waluya — Dipatiukur, Bandung | Cek stok &amp; tebus resep</title>
+<meta name="description" content="Apotek keluarga di Jl. Dipatiukur No. 112 Bandung sejak 2009. Cek ketersediaan obat lewat WhatsApp, tebus resep, konsultasi apoteker, cek tensi &amp; gula darah.">
+<meta name="theme-color" content="#f4f1ea">
+<link rel="canonical" href="https://apotek-waluya.example.id/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apotek Waluya — Dipatiukur, Bandung">
+<meta property="og:description" content="Cek ketersediaan obat lewat WhatsApp sebelum datang. Tebus resep, konsultasi apoteker, cek tensi &amp; gula darah.">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='2' fill='%2312684a'/><path d='M16 8v16M8 16h16' stroke='white' stroke-width='4'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Pharmacy",
+  "name":"Apotek Waluya",
+  "description":"Apotek keluarga di Dipatiukur, Bandung. Melayani tebus resep, konsultasi apoteker, dan alat kesehatan sejak 2009.",
+  "url":"https://apotek-waluya.example.id/",
+  "telephone":"+6281234567890",
+  "priceRange":"Rp",
+  "currenciesAccepted":"IDR",
+  "paymentAccepted":"Tunai, Transfer bank, QRIS, Kartu debit",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Jl. Dipatiukur No. 112",
+    "addressLocality":"Bandung",
+    "addressRegion":"Jawa Barat",
+    "postalCode":"40132",
+    "addressCountry":"ID"
+  },
+  "geo":{"@type":"GeoCoordinates","latitude":-6.9147,"longitude":107.6097},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"22:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"20:00"}
+  ]
+}
+</script>
+
+<style>
+/* ============================================================
+   10-base.css — token, reset, tipografi, utilitas
+   Arah desain: "label apotek" — presisi counter farmasi, bukan
+   template SaaS. Radius hampir nol, hairline sebagai pemisah,
+   mono hanya untuk data (kode rak, harga, jam, jumlah).
+   ============================================================ */
+
+:root{
+  /* permukaan */
+  --paper:#f4f1ea;      /* kertas label, hangat bukan putih bersih */
+  --card:#fffdf7;
+  --sand:#e9e3d7;
+  --band:#14181a;
+
+  /* tinta */
+  --ink:#14181a;
+  --ink-2:#39423f;
+  --muted:#5a625f;      /* >=4.5:1 di --paper (diverifikasi skrip) */
+  --muted-inv:#c3d5cd;  /* >=4.5:1 di --band */
+
+  /* garis */
+  --rule:#d9d3c5;
+  --rule-2:#c3bcab;
+  --rule-inv:#39423f;
+
+  /* hijau apotek — satu aksen saja */
+  --green:#12684a;      /* teks putih di atasnya lolos AA */
+  --green-d:#0c4a34;
+  --green-l:#3fb98a;    /* hanya untuk garis/ikon di atas gelap */
+
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --r:2px;              /* sengaja hampir kotak */
+  --gutter:clamp(18px,4vw,34px);
+  --maxw:1180px;
+
+  --hair:1px solid var(--rule);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg,iframe{max-width:100%}
+img{display:block;height:auto}
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(2rem,1.35rem + 2.6vw,3.45rem);letter-spacing:-.035em}
+h2{font-size:clamp(1.5rem,1.15rem + 1.5vw,2.2rem)}
+h3{font-size:1.06rem;letter-spacing:-.01em;line-height:1.25}
+p{margin:0}
+a{color:inherit}
+ul,ol{margin:0;padding:0;list-style:none}
+button,input,select{font:inherit;color:inherit}
+figure{margin:0}
+
+/* setiap fokus keyboard harus terlihat: cincin hijau tua, offset 2px */
+:focus-visible{outline:2px solid var(--green-d);outline-offset:2px;border-radius:1px}
+:focus:not(:focus-visible){outline:none}
+
+.wrap{
+  max-width:var(--maxw);
+  margin-inline:auto;
+  /* SATU-SATUNYA tempat gutter horizontal ditetapkan. Blok di dalam section
+     hanya boleh menambah padding vertikal — kalau tidak, blok itu duduk
+     lebih kiri/kanan dari section lain (bug 22px di versi sebelumnya). */
+  padding-inline:var(--gutter);
+}
+.section{padding-block:clamp(46px,6vw,84px)}
+.section--paper{background:var(--paper)}
+.section--card{background:var(--card)}
+.section--sand{background:var(--sand)}
+.section--band{background:var(--band);color:#f2f5f3}
+.section--band .muted{color:var(--muted-inv)}
+
+.muted{color:var(--muted)}
+.lede{font-size:clamp(1rem,.96rem + .3vw,1.16rem);color:var(--muted);max-width:56ch}
+.rule{border:0;border-top:var(--hair);margin:0}
+
+/* label kecil mono — dipakai untuk eyebrow, kode rak, keterangan */
+.eyebrow,.mono-label{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.section--band .eyebrow{color:var(--green-l)}
+
+/* judul section: label mono di atas, judul, lalu aturan penuh */
+.shead{display:grid;gap:10px;padding-bottom:18px;border-bottom:var(--hair);margin-bottom:clamp(24px,3vw,38px)}
+.shead__row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;justify-content:space-between}
+.shead p{max-width:52ch}
+
+/* tombol: persegi, tebal huruf sedang, tanpa gradien/bayangan */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:44px;padding:11px 18px;
+  border:1px solid var(--ink);
+  border-radius:var(--r);
+  background:var(--ink);color:#fff;
+  font-weight:600;font-size:.94rem;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;
+}
+.btn:hover{background:var(--green-d);border-color:var(--green-d)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--rule-2)}
+.btn--ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn--green{background:var(--green);border-color:var(--green)}
+.btn--green:hover{background:var(--green-d);border-color:var(--green-d)}
+
+/* tautan teks bergaris — aksi sekunder, tidak perlu jadi tombol */
+.tlink{
+  display:inline-flex;align-items:center;gap:7px;
+  font-weight:600;font-size:.94rem;color:var(--green);
+  text-decoration:none;border-bottom:1px solid currentColor;
+  padding-bottom:2px;
+}
+.tlink:hover{color:var(--green-d)}
+
+/* medan input: kotak tegas, label mono di atasnya */
+.field{display:grid;gap:6px}
+.field>label{font-family:var(--mono);font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{
+  width:100%;min-height:48px;padding:11px 13px;
+  background:var(--card);border:1px solid var(--rule-2);border-radius:var(--r);
+}
+.field input:focus-visible,.field select:focus-visible{outline:2px solid var(--green-d);outline-offset:1px}
+
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:50;background:var(--ink);color:#fff;padding:10px 14px;border-radius:var(--r)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+/* ============================================================
+   20-masthead.css — baris atas + blok pembuka
+   Blok pembuka SENGAJA bukan hero tengah: ini papan counter —
+   identitas di kiri, bukti operasional di kanan, satu baris
+   fakta di bawah. Surface = Explore, jadi yang dijual adalah
+   "apa yang ada di sini", bukan tagline.
+   ============================================================ */
+
+.masthead{
+  position:sticky;top:0;z-index:30;
+  background:var(--paper);
+  border-bottom:var(--hair);
+}
+.masthead__in{
+  display:flex;align-items:center;gap:clamp(10px,2vw,28px);
+  min-height:64px;
+  padding-block:9px;
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.brand__mark{
+  display:grid;place-items:center;flex:0 0 auto;
+  width:38px;height:38px;border-radius:var(--r);
+  background:var(--green);color:#fff;
+  font-family:var(--mono);font-weight:600;font-size:1rem;letter-spacing:-.02em;
+}
+.brand__txt{display:grid;line-height:1.15}
+.brand__txt b{font-size:1.02rem;letter-spacing:-.02em}
+.brand__txt span{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+.navlinks{display:flex;gap:clamp(12px,1.6vw,24px);align-items:center}
+.navlinks a{
+  text-decoration:none;font-size:.92rem;font-weight:500;color:var(--ink-2);
+  padding-block:4px;border-bottom:1px solid transparent;
+}
+.navlinks a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.masthead__cta{display:flex;align-items:center;gap:10px}
+.masthead__cta .btn{min-height:42px;padding:9px 15px}
+
+/* status buka/tutup — teks mono kecil dengan titik, bukan badge berwarna */
+.status{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
+.status__dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:0 0 auto}
+.status.is-closed .status__dot{background:#a8442f}
+
+/* --- blok pembuka ------------------------------------------------ */
+.open{padding-block:clamp(30px,4vw,54px) clamp(34px,4.5vw,60px)}
+.open__grid{display:grid;gap:clamp(24px,3.4vw,52px);align-items:start}
+@media (min-width:900px){
+  .open__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+}
+.open__kicker{margin-bottom:14px}
+.open h1{max-width:22ch}
+.open__lede{margin-top:18px;max-width:48ch}
+.open__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+/* daftar fakta operasional: baris mono dengan pemisah hairline */
+.facts{border-top:var(--hair);margin-top:26px}
+.facts__row{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:var(--hair)}
+.facts__k{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex:0 0 7.6em}
+.facts__v{font-size:.95rem;font-weight:500}
+
+/* papan bukti: kisi kategori + foto — ini yang menggantikan "hero shot" */
+.board{background:var(--card);border:var(--hair);border-radius:var(--r)}
+.board__head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-bottom:var(--hair)}
+.board__body{padding:14px}
+.board__cats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:var(--hair)}
+.board__cats span{background:var(--card);padding:9px 11px;font-size:.84rem;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.board__cats b{font-family:var(--mono);font-size:.8rem;color:var(--green)}
+.board__shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.board__shots img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r);border:var(--hair)}
+.board__foot{padding:12px 14px;border-top:var(--hair);font-size:.88rem;color:var(--muted)}
+
+/* baris fakta penuh lebar di bawah blok pembuka */
+.strip{border-block:var(--hair);background:var(--card)}
+.strip__in{display:flex;flex-wrap:wrap;gap:10px clamp(18px,3vw,40px);padding-block:14px;align-items:baseline}
+.strip__in span{font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
+.strip__in b{color:var(--ink)}
+
+@media (max-width:880px){
+  .navlinks{display:none}
+}
+@media (max-width:560px){
+  .brand__txt span{display:none}
+  .masthead__cta .btn--ghost{display:none}
+  .facts__k{flex-basis:6.4em}
+}
+/* ============================================================
+   30-catalog.css — surface UTAMA: Explore
+   Komposisinya adalah filter + kisi hasil, bukan hero. Rail
+   filter di kiri (sticky), kisi produk di kanan. Semua pemisah
+   hairline, tanpa bayangan, tanpa kartu melayang.
+   ============================================================ */
+
+.cat__grid{display:grid;gap:clamp(20px,2.6vw,40px);align-items:start}
+/* grid item default min-width:auto -> tidak bisa mengecil di bawah min-content,
+   itu yang bikin kisi produk melar 36px di viewport 320px */
+.cat__grid>*{min-width:0}
+@media (min-width:960px){
+  .cat__grid{grid-template-columns:216px minmax(0,1fr)}
+}
+
+/* --- rail filter ------------------------------------------------- */
+.rail{display:grid;gap:16px}
+@media (min-width:960px){
+  .rail{position:sticky;top:82px}
+}
+.rail__block{display:grid;gap:8px}
+.rail__list{display:grid;border-top:var(--hair)}
+.rail__list button{
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  width:100%;min-height:40px;padding:9px 2px;
+  background:none;border:0;border-bottom:var(--hair);
+  text-align:left;font-size:.92rem;cursor:pointer;color:var(--ink-2);
+}
+.rail__list button span{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.rail__list button:hover{color:var(--ink)}
+.rail__list button[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.rail__list button[aria-pressed="true"] span{color:var(--green)}
+/* penanda kategori aktif: garis tebal di kiri, bukan latar berwarna */
+.rail__list button[aria-pressed="true"]{
+  box-shadow:inset 3px 0 0 var(--green);
+  padding-left:11px;
+}
+
+/* di bawah 960px rail jadi daftar mendatar yang bisa digeser */
+@media (max-width:959px){
+  .rail__list{
+    grid-auto-flow:column;grid-auto-columns:max-content;
+    border-top:0;gap:0 18px;
+    overflow-x:auto;scrollbar-width:none;
+  }
+  .rail__list::-webkit-scrollbar{display:none}
+  .rail__list button{border-bottom:0;border-top:2px solid transparent;min-height:42px}
+  .rail__list button[aria-pressed="true"]{box-shadow:none;padding-left:2px;border-top-color:var(--green)}
+  .rail__list button span{margin-left:6px}
+}
+
+/* --- kepala hasil ------------------------------------------------- */
+.cat__bar{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
+  justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--ink);
+}
+.cat__count{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.cat__count b{font-size:.95rem}
+.cat__note{font-size:.86rem;color:var(--muted);max-width:44ch}
+
+/* --- kisi produk -------------------------------------------------- */
+.pgrid{
+  display:grid;gap:0;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+@media (min-width:620px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1180px){.pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.pcard{
+  display:grid;grid-template-rows:auto 1fr;
+  border-bottom:var(--hair);border-right:var(--hair);
+  padding:0 0 14px;min-width:0;
+}
+/* hapus garis kanan pada kolom terakhir tiap baris */
+.pgrid>.pcard:nth-child(2n){border-right:0}
+@media (min-width:620px){.pgrid>.pcard:nth-child(2n){border-right:var(--hair)}.pgrid>.pcard:nth-child(3n){border-right:0}}
+@media (min-width:1180px){.pgrid>.pcard:nth-child(3n){border-right:var(--hair)}.pgrid>.pcard:nth-child(4n){border-right:0}}
+
+.pcard[hidden]{display:none}
+
+.pcard__foto{position:relative;padding:14px 14px 12px 0}
+.pcard__img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;
+  border:var(--hair);border-radius:var(--r);background:var(--sand);
+}
+.pcard__tag{
+  position:absolute;left:0;bottom:12px;
+  background:var(--ink);color:#fff;
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 7px;border-radius:0 var(--r) var(--r) 0;
+}
+.pcard__body{display:grid;gap:6px;padding-right:14px;align-content:start;min-width:0}
+.pcard__code{font-family:var(--mono);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.pcard__nama{font-size:.98rem;overflow-wrap:anywhere}
+.pcard__desc{font-size:.86rem;color:var(--muted);line-height:1.45}
+.pcard__foot{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+  gap:6px 10px;
+  margin-top:8px;padding-top:9px;border-top:var(--hair);min-width:0;
+}
+.pcard__harga{font-family:var(--mono);font-size:.92rem;font-weight:600}
+.pcard__acts{display:inline-flex;align-items:baseline;gap:14px;flex-wrap:wrap;justify-content:flex-end;min-width:0}
+.pcard__more{
+  display:inline-flex;align-items:center;min-height:26px;
+  background:none;border:0;padding:0;cursor:pointer;
+  font-size:.86rem;color:var(--muted);border-bottom:1px dotted var(--rule-2);
+}
+.pcard__more:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.pcard__cta{
+  display:inline-flex;align-items:center;min-height:26px;
+  font-size:.86rem;font-weight:600;color:var(--green);text-decoration:none;
+  border-bottom:1px solid currentColor;
+}
+.pcard__cta:hover{color:var(--green-d)}
+
+/* keadaan kosong hasil pencarian */
+.cat__empty{
+  display:none;padding:34px 0;text-align:left;
+  border-bottom:var(--hair);
+}
+.cat__empty.is-on{display:block}
+.cat__empty h3{margin-bottom:8px}
+.cat__empty p{color:var(--muted);max-width:46ch;margin-bottom:14px}
+
+/* tombol muat lebih banyak */
+.cat__more{display:flex;justify-content:center;padding-top:26px}
+.cat__more button{
+  min-height:46px;padding:12px 22px;background:var(--card);
+  border:1px solid var(--rule-2);border-radius:var(--r);
+  font-weight:600;font-size:.92rem;cursor:pointer;
+}
+.cat__more button:hover{border-color:var(--ink);background:var(--paper)}
+.cat__more[hidden]{display:none}
+
+@media (max-width:619px){
+  /* kartu 2 kolom: rapatkan sedikit, deskripsi tetap tampil (grid menyamakan
+     tinggi kartu per baris, jadi garis bawahnya tetap lurus) */
+  .pcard__foto{padding:12px 12px 10px 0}
+  .pcard__body{padding-right:12px}
+  .pcard__tag{bottom:10px}
+  .pcard__code{font-size:.63rem}
+}
+
+@media (max-width:400px){
+  /* di bawah 400px: harga pindah baris sendiri, aksi tetap sejajar */
+  .pcard__foot{justify-content:flex-start}
+  .pcard__acts{width:100%;justify-content:flex-start;gap:12px}
+}
+/* ============================================================
+   40-detail.css — panel detail produk (<dialog>)
+   Muncul saat kartu diklik. Karena kartu di mobile 2 kolom dan
+   deskripsi disembunyikan, panel ini yang membawa detail penuh.
+   ============================================================ */
+
+.pdetail{
+  width:min(560px,calc(100vw - 2*var(--gutter)));
+  padding:0;border:1px solid var(--ink);border-radius:var(--r);
+  background:var(--card);color:var(--ink);
+}
+.pdetail::backdrop{background:rgba(20,24,26,.55)}
+.pdetail__in{display:grid;gap:14px;padding:18px}
+.pdetail__top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.pdetail__foto{width:100%;aspect-ratio:4/3;object-fit:cover;border:var(--hair);border-radius:var(--r)}
+.pdetail__code{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pdetail h3{font-size:1.24rem;letter-spacing:-.02em}
+.pdetail__desc{color:var(--muted);font-size:.94rem}
+.pdetail__rows{border-top:var(--hair)}
+.pdetail__rows div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:var(--hair)}
+.pdetail__rows span{font-family:var(--mono);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.pdetail__rows b{font-family:var(--mono);font-size:.92rem}
+.pdetail__x{
+  flex:0 0 auto;width:40px;height:40px;display:grid;place-items:center;
+  background:none;border:1px solid var(--rule-2);border-radius:var(--r);
+  cursor:pointer;font-size:1.1rem;line-height:1;
+}
+.pdetail__x:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pdetail__cta{display:grid;gap:8px}
+.pdetail__cta .btn{justify-content:center}
+
+/* tombol WhatsApp mengambang — di mobile jadi bulat 52px, dan blok terakhir
+   halaman diberi padding bawah supaya tidak ada teks yang tertutup */
+.wafloat{
+  position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:40;
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:52px;padding:0 18px;border-radius:var(--r);
+  background:var(--green);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:1px solid var(--green-d);
+}
+.wafloat:hover{background:var(--green-d)}
+.wafloat svg{width:21px;height:21px;flex:0 0 auto}
+@media (max-width:600px){
+  .wafloat{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%}
+  .wafloat span{display:none}
+}
+/* ============================================================
+   50-sections.css — layanan, alur, kunjungi, footer
+   Layanan = baris editorial bernomor (bukan 3 kartu sejajar).
+   Alur = pita proses 3 kolom tanpa kotak.
+   ============================================================ */
+
+/* --- layanan ------------------------------------------------------ */
+.svc__list{border-top:var(--hair)}
+.svc{
+  display:grid;gap:clamp(14px,2vw,30px);align-items:start;
+  padding-block:clamp(20px,2.4vw,30px);
+  border-bottom:var(--hair);
+}
+.svc:first-child{border-top:0}
+@media (min-width:880px){
+  .svc{grid-template-columns:auto minmax(0,1fr) 300px}
+}
+.svc__n{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;
+  color:var(--green);padding-top:5px;
+}
+.svc__txt h3{margin-bottom:7px}
+.svc__txt p{color:var(--muted);font-size:.94rem;max-width:56ch}
+.svc__foto img{width:100%;border:var(--hair);border-radius:var(--r)}
+@media (max-width:879px){
+  .svc__n{padding-top:0}
+  .svc__foto img{aspect-ratio:16/9}
+}
+
+/* --- alur --------------------------------------------------------- */
+.steps{
+  display:grid;gap:0;border-top:1px solid var(--ink);
+}
+@media (min-width:760px){
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(20px,3vw,40px)}
+}
+.step{display:grid;gap:8px;padding-block:18px;border-bottom:var(--hair)}
+@media (min-width:760px){.step{border-bottom:0;border-top:0}}
+.step__n{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
+  color:var(--green);font-weight:500;
+}
+.step h3{font-size:1rem}
+.step p{color:var(--muted);font-size:.9rem}
+
+/* --- kunjungi ----------------------------------------------------- */
+.visit{display:grid;gap:clamp(24px,3vw,44px);align-items:start}
+@media (min-width:900px){
+  .visit{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+.visit__rows{border-top:1px solid var(--rule-inv);margin-top:26px}
+.vrow{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule-inv)}
+.vrow__ico{flex:0 0 auto;width:22px;padding-top:2px}
+.vrow__ico svg{width:22px;height:22px;display:block}
+.vrow b{display:block;font-size:.95rem;margin-bottom:3px}
+.vrow p{font-size:.9rem;color:var(--muted-inv)}
+.vrow a{color:#fff;text-decoration:none;border-bottom:1px solid var(--green-l)}
+.vrow a:hover{color:var(--green-l)}
+.hours{display:flex;justify-content:space-between;gap:14px;font-family:var(--mono);font-size:.82rem;color:var(--muted-inv);padding:3px 0}
+.hours b{color:#fff;font-weight:500}
+
+.visit__map{display:grid;gap:10px}
+.visit__map iframe{
+  width:100%;aspect-ratio:4/3;border:1px solid var(--rule-inv);border-radius:var(--r);
+  filter:grayscale(1) contrast(1.05);   /* peta mengikuti nada halaman, bukan biru bawaan */
+}
+.visit__map figcaption{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;font-size:.84rem;color:var(--muted-inv)}
+.visit__map figcaption a{color:#fff;text-decoration:none;border-bottom:1px solid var(--green-l)}
+
+/* --- footer ------------------------------------------------------- */
+.foot{background:var(--band);color:#f2f5f3;border-top:1px solid var(--rule-inv)}
+.foot__in{display:grid;gap:clamp(20px,3vw,40px);padding-block:clamp(28px,3.4vw,44px)}
+@media (min-width:760px){.foot__in{grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,.9fr))}}
+.foot h4{font-size:.8rem;font-family:var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--green-l);font-weight:500;margin-bottom:11px}
+.foot ul{display:grid;gap:8px}
+.foot a{color:var(--muted-inv);text-decoration:none;font-size:.9rem;display:inline-block;min-height:24px;line-height:24px}
+.foot a:hover{color:#fff}
+.foot ul{gap:3px}
+.foot__about p{color:var(--muted-inv);font-size:.9rem;max-width:40ch;margin-top:10px}
+.foot__bot{
+  border-top:1px solid var(--rule-inv);padding-block:16px 22px;
+  display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+  font-size:.8rem;color:var(--muted-inv);
+}
+.foot__bot span{font-family:var(--mono);letter-spacing:.03em}
+</style>
+</head>
+<body>
+<a class="skip" href="#katalog">Lewati ke katalog</a>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <a class="brand" href="#atas" aria-label="Apotek Waluya, ke atas">
+      <span class="brand__mark" aria-hidden="true">W</span>
+      <span class="brand__txt">
+        <b>Apotek Waluya</b>
+        <span>Dipatiukur &middot; Bandung</span>
+      </span>
+    </a>
+    <nav class="navlinks" aria-label="Navigasi utama">
+      <a href="#katalog">Katalog</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#alur">Cara pesan</a>
+      <a href="#kunjungi">Kunjungi</a>
+    </nav>
+    <div class="masthead__cta">
+      <span class="status" id="statusBuka"><span class="status__dot" aria-hidden="true"></span><span id="statusTeks">Jam buka</span></span>
+      <a class="btn btn--ghost" href="tel:+6281234567890">Telepon</a>
+      <a class="btn btn--green" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20bertanya." target="_blank" rel="noopener">Chat WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main id="atas">
+
+  <!-- Blok pembuka: papan counter, bukan hero tengah -->
+  <section class="open">
+    <div class="wrap open__grid">
+      <div>
+        <p class="eyebrow open__kicker">Apotek keluarga &middot; sejak 2009</p>
+        <h1>Obat yang kamu cari, dicek dulu sebelum berangkat.</h1>
+        <p class="lede open__lede">
+          Kirim nama obat atau foto resep lewat WhatsApp. Kami balas apa yang tersedia,
+          harganya, lalu kamu ambil di toko atau minta diantar.
+        </p>
+        <div class="open__cta">
+          <a class="btn btn--green" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20cek%20stok%20obat." target="_blank" rel="noopener">Cek stok lewat WhatsApp</a>
+          <a class="btn btn--ghost" href="#katalog">Lihat katalog</a>
+        </div>
+
+        <div class="facts">
+          <div class="facts__row"><span class="facts__k">Alamat</span><span class="facts__v">Jl. Dipatiukur No. 112, Bandung 40132</span></div>
+          <div class="facts__row"><span class="facts__k">Buka</span><span class="facts__v">Senin–Sabtu 07.00–22.00 &middot; Minggu 08.00–20.00</span></div>
+          <div class="facts__row"><span class="facts__k">Layanan</span><span class="facts__v">Tebus resep, konsultasi apoteker, cek tensi &amp; gula darah</span></div>
+          <div class="facts__row"><span class="facts__k">Bayar</span><span class="facts__v">Tunai, transfer, QRIS, kartu debit</span></div>
+        </div>
+      </div>
+
+      <aside class="board" aria-label="Ringkasan isi apotek">
+        <div class="board__head">
+          <span class="mono-label">Isi rak</span>
+          <span class="mono-label">23 produk</span>
+        </div>
+        <div class="board__body">
+          <div class="board__cats"><span>Vitamin & Suplemen <b>3</b></span><span>Obat Bebas <b>3</b></span><span>Alat Kesehatan <b>5</b></span><span>Bayi & Ibu <b>4</b></span><span>Perawatan Kulit <b>3</b></span><span>Higienis & P3K <b>5</b></span></div>
+          <div class="board__shots">
+            <picture><source type="image/webp" srcset="assets/webp/farmasi-susun-480.webp 480w, assets/webp/farmasi-susun-800.webp 800w, assets/webp/farmasi-susun-1200.webp 1200w" sizes="(max-width:900px) 45vw, 240px"><img class="board__img" src="assets/webp/farmasi-susun-800.webp" width="1200" height="800" alt="Rak obat tersusun di Apotek Waluya" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIEAwX/xAAcEAACAgMBAQAAAAAAAAAAAAABAwACBBESQTL/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAEQEh/9oADAMBAAIRAxEAPwDjVUSj63aa4SnrRe99nXkRZ4WQZVgsLKE2Puoca2mwc/bTVteQISbObWmRwKgH0wlA/9k=);background-size:cover"></picture>
+            <picture><source type="image/webp" srcset="assets/webp/farmasi-obat-480.webp 480w, assets/webp/farmasi-obat-800.webp 800w, assets/webp/farmasi-obat-1200.webp 1200w" sizes="(max-width:900px) 45vw, 240px"><img class="board__img" src="assets/webp/farmasi-obat-800.webp" width="1200" height="1800" alt="Kemasan obat di rak apotek" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAIEAwUGAf/EACAQAAICAgICAwAAAAAAAAAAAAECAAMEEQUSISIUQXH/xAAXAQEAAwAAAAAAAAAAAAAAAAACAAED/8QAGREBAQADAQAAAAAAAAAAAAAAAAECITER/9oADAMBAAIRAxEAPwCBK0r2dgBM+NbXaNowM5vKN2Qp9iV3LnCVvVskn8klirjfHV4yBonmNYq67GIgaLDwlCatEkwFR61ga3IY+X3PVpQys9qLmUj7gmmt22tdrteGY6URKWHlfJYBjoRFBrDiH2Eo8x4yDEQTh3qHH2MtgAPgxERBX//Z);background-size:cover"></picture>
+          </div>
+        </div>
+        <p class="board__foot">Foto rak kami sendiri — bukan stok foto. Kalau barangnya tidak terlihat, tanya saja.</p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip__in">
+      <span>Melayani <b>resep dokter</b></span>
+      <span>Konsultasi <b>tanpa biaya</b></span>
+      <span>Antar sekitar <b>Dipatiukur</b></span>
+      <span>Alkes <b>bisa disewa</b></span>
+    </div>
+  </div>
+
+  <!-- SURFACE UTAMA: Explore — filter + kisi hasil -->
+  <section class="section section--card" id="katalog">
+    <div class="wrap">
+      <div class="shead">
+        <div class="shead__row">
+          <p class="eyebrow">Katalog</p>
+          <p class="mono-label" id="katalogLive" role="status" aria-live="polite"></p>
+        </div>
+        <h2>Apa saja yang ada di rak</h2>
+        <p class="lede">
+          Harga yang tercantum adalah harga toko. Ketersediaan bisa berubah tiap hari —
+          tombol <b>Cek stok</b> membuka WhatsApp dengan nama barang sudah terisi.
+        </p>
+      </div>
+
+      <div class="cat__grid">
+        <div class="rail">
+          <div class="rail__block">
+            <label class="mono-label" for="cari">Cari barang</label>
+            <div class="field">
+              <input id="cari" type="search" placeholder="cth. paracetamol, popok, tensi" autocomplete="off">
+            </div>
+          </div>
+          <div class="rail__block">
+            <p class="mono-label" id="railKatLabel">Kategori</p>
+            <div class="rail__list" role="group" aria-labelledby="railKatLabel">
+          <button type="button" data-filter="all" aria-pressed="true">Semua<span>23</span></button>
+          <button type="button" data-filter="vitamin" aria-pressed="false">Vitamin & Suplemen<span>3</span></button>
+          <button type="button" data-filter="obat" aria-pressed="false">Obat Bebas<span>3</span></button>
+          <button type="button" data-filter="alkes" aria-pressed="false">Alat Kesehatan<span>5</span></button>
+          <button type="button" data-filter="bayi" aria-pressed="false">Bayi & Ibu<span>4</span></button>
+          <button type="button" data-filter="kulit" aria-pressed="false">Perawatan Kulit<span>3</span></button>
+          <button type="button" data-filter="higienis" aria-pressed="false">Higienis & P3K<span>5</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="cat__bar">
+            <p class="cat__count"><b id="hasilJumlah">23</b> barang ditampilkan</p>
+            <p class="cat__note">Klik kartu untuk lihat keterangan lengkap.</p>
+          </div>
+
+          <div class="pgrid" id="pgrid">
+<article class="pcard" data-kat="vitamin" data-katnama="Vitamin & Suplemen" data-satuan="60 tablet" data-cari="vitamin c 1000mg membantu menjaga daya tahan tubuh. aman untuk konsumsi harian. vit-01">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/vitamin-c-card.webp" width="600" height="600" alt="Vitamin C 1000mg" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUGAwT/xAAjEAABBAIBAwUAAAAAAAAAAAABAAIDEQQFIRITFDFBcYGR/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAIDAf/EABoRAQEAAgMAAAAAAAAAAAAAAAEAAjERIUH/2gAMAwEAAhEDEQA/AKOv2EebH1R/i6Zsfex3MurCi6vIhZBcADbVITFw9bSq+VQ5s+zXzeSWS8sHuiuktunEAoicA6sdE4iFtEj7Wh1LiYuSSiIpY7vHuXOGSKcR8FERbGW7/9k=);background-size:cover"><span class="pcard__tag">Terlaris</span></div>
+  <div class="pcard__body">
+    <span class="pcard__code">VIT-01 &middot; 60 tablet</span>
+    <h3 class="pcard__nama">Vitamin C 1000mg</h3>
+    <p class="pcard__desc">Membantu menjaga daya tahan tubuh. Aman untuk konsumsi harian.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 35.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Vitamin%20C%201000mg%20%2860%20tablet%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="vitamin" data-katnama="Vitamin & Suplemen" data-satuan="30 kapsul" data-cari="multivitamin kompleks kombinasi vitamin a–z untuk dewasa yang sibuk dan kurang tidur. vit-02">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/multivitamin-card.webp" width="600" height="600" alt="Multivitamin Kompleks" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEBQb/xAAgEAACAgEEAwEAAAAAAAAAAAABAgADBBESE0EFIVEx/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//EABgRAAMBAQAAAAAAAAAAAAAAAAABEQIh/9oADAMBAAIRAxEAPwBmH5PKa0c6AKfkozQ6vuRSwaYlWS12SqVsCoPU6AWHg0PQmdc6W5eD8NtlA1/YSSm8l9i+/sIZ3UJqH//Z);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">VIT-02 &middot; 30 kapsul</span>
+    <h3 class="pcard__nama">Multivitamin Kompleks</h3>
+    <p class="pcard__desc">Kombinasi vitamin A–Z untuk dewasa yang sibuk dan kurang tidur.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 65.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Multivitamin%20Kompleks%20%2830%20kapsul%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="vitamin" data-katnama="Vitamin & Suplemen" data-satuan="60 softgel" data-cari="vitamin d3 5000 iu menjaga kesehatan tulang dan fungsi otot. cocok untuk yang jarang kena matahari. vit-03">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/vitamin-d3-card.webp" width="600" height="600" alt="Vitamin D3 5000 IU" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQDAv/EACAQAAICAgICAwAAAAAAAAAAAAABAhEDEiExBCMyM4H/xAAYAQEBAAMAAAAAAAAAAAAAAAAAAgEDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAABESH/2gAMAwEAAhEDEQA/AKp4pQZt48ZJWzaKU/kjrIvW9FyjY5ZtjOUFMHGBSp7AI2zkPHnaXf6UrkjxupNbFMXQXuUycddgNbAGoVkacarksj9dgCFLoAFMv//Z);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">VIT-03 &middot; 60 softgel</span>
+    <h3 class="pcard__nama">Vitamin D3 5000 IU</h3>
+    <p class="pcard__desc">Menjaga kesehatan tulang dan fungsi otot. Cocok untuk yang jarang kena matahari.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 78.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Vitamin%20D3%205000%20IU%20%2860%20softgel%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="obat" data-katnama="Obat Bebas" data-satuan="strip (10 tablet)" data-cari="paracetamol 500mg pereda nyeri dan penurun panas. tersedia dalam kemasan kecil maupun dus. obt-01">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/paracetamol-card.webp" width="600" height="600" alt="Paracetamol 500mg" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAECBAMG/8QAHRAAAgICAwEAAAAAAAAAAAAAAAECAwQREhNBMf/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAZEQEBAAMBAAAAAAAAAAAAAAAAARESITH/2gAMAwEAAhEDEQA/APYIsQiUMgEgAz41qvhyRN1vX6YMC51S63FrZryFGyLXpnbtOKnPXftSgmwYq1LjqT+A0wlSP3fp02wBGbAAB//Z);background-size:cover"><span class="pcard__tag">Sering dicari</span></div>
+  <div class="pcard__body">
+    <span class="pcard__code">OBT-01 &middot; strip (10 tablet)</span>
+    <h3 class="pcard__nama">Paracetamol 500mg</h3>
+    <p class="pcard__desc">Pereda nyeri dan penurun panas. Tersedia dalam kemasan kecil maupun dus.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 12.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Paracetamol%20500mg%20%28strip%20%2810%20tablet%29%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="obat" data-katnama="Obat Bebas" data-satuan="strip (10 tablet)" data-cari="ibuprofen 400mg untuk nyeri ringan hingga sedang dan nyeri haid. konsumsi setelah makan. obt-02">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/ibuprofen-card.webp" width="600" height="600" alt="Ibuprofen 400mg" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQA/8QAHhAAAgICAgMAAAAAAAAAAAAAAQIAAxEhEjETIkH/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAgP/xAAZEQEBAAMBAAAAAAAAAAAAAAABAAIRITH/2gAMAwEAAhEDEQA/AKlYiwB+jKam5KUO5EyHBGdjqNSxIVhoiQOIWqKx8fHcy/DNHs9jkjc0NlrfJJ52/9k=);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">OBT-02 &middot; strip (10 tablet)</span>
+    <h3 class="pcard__nama">Ibuprofen 400mg</h3>
+    <p class="pcard__desc">Untuk nyeri ringan hingga sedang dan nyeri haid. Konsumsi setelah makan.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 18.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Ibuprofen%20400mg%20%28strip%20%2810%20tablet%29%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="obat" data-katnama="Obat Bebas" data-satuan="botol 100 ml" data-cari="antasida suspensi meredakan nyeri lambung, kembung, dan rasa perih akibat asam berlebih. obt-03">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/antasida-card.webp" width="600" height="600" alt="Antasida Suspensi" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EACAQAAEDAwUBAAAAAAAAAAAAAAEAAgMEERIFITFBURP/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwBWkhhxDmi59TFRCZYyD5skdFlD7xnnpXWR5M43CO2kx9Vdry0ixCFV12gxb92cdoSF/9k=);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">OBT-03 &middot; botol 100 ml</span>
+    <h3 class="pcard__nama">Antasida Suspensi</h3>
+    <p class="pcard__desc">Meredakan nyeri lambung, kembung, dan rasa perih akibat asam berlebih.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 22.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Antasida%20Suspensi%20%28botol%20100%20ml%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="alkes" data-katnama="Alat Kesehatan" data-satuan="unit" data-cari="tensimeter digital lengan pembacaan otomatis, memori 2 pengguna. garansi resmi 1 tahun. alk-01">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/alkes-tensi-digital-card.webp" width="600" height="600" alt="Tensimeter Digital Lengan" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAABA//EAB4QAAEEAgMBAAAAAAAAAAAAAAEAAgMRBBIFITEy/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oADAMBAAIRAxEAPwBLgzExWCNoTeO2liBFLjkwW3WrrxN4uPSCiKTHIpshjCJA1xGpUtd9d+jxSxdoMv/Z);background-size:cover"><span class="pcard__tag">Bergaransi</span></div>
+  <div class="pcard__body">
+    <span class="pcard__code">ALK-01 &middot; unit</span>
+    <h3 class="pcard__nama">Tensimeter Digital Lengan</h3>
+    <p class="pcard__desc">Pembacaan otomatis, memori 2 pengguna. Garansi resmi 1 tahun.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 265.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Tensimeter%20Digital%20Lengan%20%28unit%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="alkes" data-katnama="Alat Kesehatan" data-satuan="set + stetoskop" data-cari="tensimeter manual (sphygmomanometer) set lengkap untuk penggunaan di rumah maupun praktik mandiri. alk-02">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/alkes-tensi-manual-card.webp" width="600" height="600" alt="Tensimeter Manual (Sphygmomanometer)" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBP/EAB4QAAICAgIDAAAAAAAAAAAAAAECAAQFEQMSFEFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC7lLxpcHdRszLjc01tyrJoiPyFTzuIL21EUcSKjFg2yYRVXm+wiuh9whX/2Q==);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">ALK-02 &middot; set + stetoskop</span>
+    <h3 class="pcard__nama">Tensimeter Manual (Sphygmomanometer)</h3>
+    <p class="pcard__desc">Set lengkap untuk penggunaan di rumah maupun praktik mandiri.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 145.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Tensimeter%20Manual%20%28Sphygmomanometer%29%20%28set%20%2B%20stetoskop%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="alkes" data-katnama="Alat Kesehatan" data-satuan="unit" data-cari="kotak obat 4 sekat membantu mengatur obat harian agar tidak terlewat. rapi dibawa bepergian. alk-03">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/alkes-kotak-obat-card.webp" width="600" height="600" alt="Kotak Obat 4 Sekat" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgUG/8QAIBAAAgICAgIDAAAAAAAAAAAAAQIAAwQRBSESE0FRcf/EABYBAQEBAAAAAAAAAAAAAAAAAAIDBP/EABkRAQEBAAMAAAAAAAAAAAAAAAEAAxESMf/aAAwDAQACEQMRAD8AXtwkfYLAblRwq1UN67d7+I23HNbkexWP5It86emBEz8p5W6jctmYz41h66+4TcvrS9SGEIzSLnf/2Q==);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">ALK-03 &middot; unit</span>
+    <h3 class="pcard__nama">Kotak Obat 4 Sekat</h3>
+    <p class="pcard__desc">Membantu mengatur obat harian agar tidak terlewat. Rapi dibawa bepergian.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 35.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Kotak%20Obat%204%20Sekat%20%28unit%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="alkes" data-katnama="Alat Kesehatan" data-satuan="paket" data-cari="paket lansia sehat tensimeter digital + kotak obat 7 hari + termometer. hemat dibanding beli terpisah. alk-04">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/alkes-paket-lansia-card.webp" width="600" height="600" alt="Paket Lansia Sehat" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDBAX/xAAgEAACAgEDBQAAAAAAAAAAAAABAgADEQQSMRMhIkFh/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAARASH/2gAMAwEAAhEDEQA/AOnjVC1jY3j6ESs9hORibGUs3ySsQ4OzmZZt6qVF7dQoeBxCTr05Vy5PcwjD/9k=);background-size:cover"><span class="pcard__tag">Paket hemat</span></div>
+  <div class="pcard__body">
+    <span class="pcard__code">ALK-04 &middot; paket</span>
+    <h3 class="pcard__nama">Paket Lansia Sehat</h3>
+    <p class="pcard__desc">Tensimeter digital + kotak obat 7 hari + termometer. Hemat dibanding beli terpisah.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 420.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Paket%20Lansia%20Sehat%20%28paket%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="higienis" data-katnama="Higienis & P3K" data-satuan="kotak" data-cari="p3k rumah lengkap kasa, plester, perban, antiseptik, gunting, dan sarung tangan dalam satu kotak. hgn-01">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/alkes-p3k-card.webp" width="600" height="600" alt="P3K Rumah Lengkap" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMCBv/EAB8QAAICAQQDAAAAAAAAAAAAAAECAAMhBBEiURITYf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDpdRXzVpcWbp18mioYZhWUDxIzAklro/IbrEW2evLDHcQP/9k=);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">HGN-01 &middot; kotak</span>
+    <h3 class="pcard__nama">P3K Rumah Lengkap</h3>
+    <p class="pcard__desc">Kasa, plester, perban, antiseptik, gunting, dan sarung tangan dalam satu kotak.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 95.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20P3K%20Rumah%20Lengkap%20%28kotak%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="alkes" data-katnama="Alat Kesehatan" data-satuan="unit" data-cari="stetoskop dewasa diafragma ganda, akurasi baik. untuk mahasiswa kesehatan dan bidan. alk-05">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/alkes-stetoskop-card.webp" width="600" height="600" alt="Stetoskop Dewasa" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAIDAQQF/8QAJBAAAgICAQMEAwAAAAAAAAAAAQIAAwQRIQUSUQYTIkExMmH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABcRAQEBAQAAAAAAAAAAAAAAAAABESH/2gAMAwEAAhEDEQA/ANvIvDKXfZ54AkumZiWXGo9wH9nRFFBp1Yo39SFGPjVoToB/MCjrjNjYTXY/y1Eo9Rl16d7eO37fmIHarCMg2BMvUhQ6Amu57QQDrcrtewY4Wt/l5Msm8S3JqV2CttZVuQYmcd3UAO3d5MRmLLpd9So8mIkFijQiIgf/2Q==);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">ALK-05 &middot; unit</span>
+    <h3 class="pcard__nama">Stetoskop Dewasa</h3>
+    <p class="pcard__desc">Diafragma ganda, akurasi baik. Untuk mahasiswa kesehatan dan bidan.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 185.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Stetoskop%20Dewasa%20%28unit%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="bayi" data-katnama="Bayi & Ibu" data-satuan="isi 24 pcs" data-cari="popok bayi perekat daya serap tinggi, permukaan lembut. tersedia ukuran s, m, l, xl. byi-01">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/bayi-popok-card.webp" width="600" height="600" alt="Popok Bayi Perekat" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAEDBAX/xAAfEAACAwACAgMAAAAAAAAAAAAAAQIDEQQhBTEUMkL/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAERIf/aAAwDAQACEQMRAD8A7O6QU8e2TWTXZdqZk1gCQBsnBbsjthqcYqSaOJw+ZJQSxmiXIajqb3R6nHVfXsGKPkYqvXF9AfAtrorXqKLI0Vv8oAcSn49WfRAAA//Z);background-size:cover"><span class="pcard__tag">Tersedia S–XL</span></div>
+  <div class="pcard__body">
+    <span class="pcard__code">BYI-01 &middot; isi 24 pcs</span>
+    <h3 class="pcard__nama">Popok Bayi Perekat</h3>
+    <p class="pcard__desc">Daya serap tinggi, permukaan lembut. Tersedia ukuran S, M, L, XL.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 62.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Popok%20Bayi%20Perekat%20%28isi%2024%20pcs%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="bayi" data-katnama="Bayi & Ibu" data-satuan="tube 50 g" data-cari="krim bayi ruam popok menenangkan kulit bayi yang kemerahan. bebas pewangi dan alkohol. byi-02">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/bayi-krim-card.webp" width="600" height="600" alt="Krim Bayi Ruam Popok" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBP/EABsQAAIDAQEBAAAAAAAAAAAAAAECAAMREkEE/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQME/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERAiH/2gAMAwEAAhEDEQA/AKiHa+R7H0qFVvTJ1dpMctpAOGU0qjPlxirb17IJwwmc/PthZjuwjmzoalP/2Q==);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">BYI-02 &middot; tube 50 g</span>
+    <h3 class="pcard__nama">Krim Bayi Ruam Popok</h3>
+    <p class="pcard__desc">Menenangkan kulit bayi yang kemerahan. Bebas pewangi dan alkohol.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 48.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Krim%20Bayi%20Ruam%20Popok%20%28tube%2050%20g%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="bayi" data-katnama="Bayi & Ibu" data-satuan="isi 2 pcs" data-cari="dot bayi silikon silikon lembut, bpa-free. aman untuk bayi baru lahir ke atas. byi-03">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/bayi-dot-card.webp" width="600" height="600" alt="Dot Bayi Silikon" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwb/xAAdEAABBAMBAQAAAAAAAAAAAAACAAEDEQQhMRMS/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwDS5M3iDV1+KqRpXjcm7SnNAjhsOjtLBnmQfDhR0ol1pZhjFk9Yt9bqEY7OIO5atCcD/9k=);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">BYI-03 &middot; isi 2 pcs</span>
+    <h3 class="pcard__nama">Dot Bayi Silikon</h3>
+    <p class="pcard__desc">Silikon lembut, BPA-free. Aman untuk bayi baru lahir ke atas.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 32.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Dot%20Bayi%20Silikon%20%28isi%202%20pcs%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="bayi" data-katnama="Bayi & Ibu" data-satuan="isi 100 pcs" data-cari="cotton bud bayi ujung kecil dan padat untuk membersihkan area luar telinga dan hidung bayi. byi-04">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/bayi-cottonbud-card.webp" width="600" height="600" alt="Cotton Bud Bayi" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAAMEAQIG/8QAHRAAAwEBAAIDAAAAAAAAAAAAAAECEQMhMRITUf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwD1N2T/AHLTeuteBHVfFajNtakiuOqfoCXhuawKiloXSl+xtLBdJAYvxAdTOAEUWvIpytACjuZQAAH/2Q==);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">BYI-04 &middot; isi 100 pcs</span>
+    <h3 class="pcard__nama">Cotton Bud Bayi</h3>
+    <p class="pcard__desc">Ujung kecil dan padat untuk membersihkan area luar telinga dan hidung bayi.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 18.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Cotton%20Bud%20Bayi%20%28isi%20100%20pcs%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="kulit" data-katnama="Perawatan Kulit" data-satuan="jar 50 g" data-cari="pelembap wajah spf melembapkan sekaligus melindungi dari sinar matahari harian. klt-01">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/kulit-pelembap-card.webp" width="600" height="600" alt="Pelembap Wajah SPF" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDBAX/xAAgEAACAgEFAAMAAAAAAAAAAAABAgADBBESISIxQVFx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABcRAQEBAQAAAAAAAAAAAAAAAAEAAhH/2gAMAwEAAhEDEQA/AOplUl31U6GTpSxLdrjqfmaSC3PkWQjtWCnOn1A5GZrlbGqWsdR7CLB3hTvBH7CMhf/Z);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">KLT-01 &middot; jar 50 g</span>
+    <h3 class="pcard__nama">Pelembap Wajah SPF</h3>
+    <p class="pcard__desc">Melembapkan sekaligus melindungi dari sinar matahari harian.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 89.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Pelembap%20Wajah%20SPF%20%28jar%2050%20g%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="kulit" data-katnama="Perawatan Kulit" data-satuan="botol 200 ml" data-cari="losion tubuh untuk kulit kering dan kasar. cepat meresap, tidak lengket. klt-02">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/kulit-losion-card.webp" width="600" height="600" alt="Losion Tubuh" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAeABgDASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAQCAwEFBv/EAB8QAAIDAAICAwAAAAAAAAAAAAECAAMRBRIEMRMhcf/EABgBAAIDAAAAAAAAAAAAAAAAAAABAgME/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAEREv/aAAwDAQACEQMRAD8A6BaJP4fqXkhZh7FROx9RNPRWyoZCWWOGXR6hBJrW5G7oS9efkhdzNbUBCDsmy6MPoxQ+DUzdsjV4Z8bkazTjHIRZq0QdQohA9sf/2Q==);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">KLT-02 &middot; botol 200 ml</span>
+    <h3 class="pcard__nama">Losion Tubuh</h3>
+    <p class="pcard__desc">Untuk kulit kering dan kasar. Cepat meresap, tidak lengket.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 55.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Losion%20Tubuh%20%28botol%20200%20ml%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="kulit" data-katnama="Perawatan Kulit" data-satuan="botol 60 ml" data-cari="tabir surya spf 50 ringan, tidak meninggalkan bekas putih. cocok untuk kulit berminyak. klt-03">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/kulit-tabir-card.webp" width="600" height="600" alt="Tabir Surya SPF 50" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAArABgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgUD/8QAHhAAAgICAwEBAAAAAAAAAAAAAAECEQMxBBIhFEH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANeOa0XUpS0hrFwIw36d44Yx0ihFYJy34A+4gBGRTbtOkDn6q0WyexaRxllWOHWrYE5MtVQFYw7RXYAM+PPyVsPsldtIRg/CWwrQXPf6gM5sAP/Z);background-size:cover"><span class="pcard__tag">Terlaris</span></div>
+  <div class="pcard__body">
+    <span class="pcard__code">KLT-03 &middot; botol 60 ml</span>
+    <h3 class="pcard__nama">Tabir Surya SPF 50</h3>
+    <p class="pcard__desc">Ringan, tidak meninggalkan bekas putih. Cocok untuk kulit berminyak.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 98.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Tabir%20Surya%20SPF%2050%20%28botol%2060%20ml%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="higienis" data-katnama="Higienis & P3K" data-satuan="botol 500 ml" data-cari="hand sanitizer 500ml kadar alkohol 70%, ditambah pelembap agar tangan tidak kering. hgn-02">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/higienis-sanitizer-card.webp" width="600" height="600" alt="Hand Sanitizer 500ml" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EAB8QAAICAQUBAQAAAAAAAAAAAAECAAQDBREhMYESMv/EABYBAQEBAAAAAAAAAAAAAAAAAAMCBP/EABkRAAMBAQEAAAAAAAAAAAAAAAABAhESIf/aAAwDAQACEQMRAD8An06ZsKSOxG10Zvglm2MUpXGwNx1KTaghTct5DSTNd1cvESLVU4W2PMJvbtrk/K+wkVmjx1z6j//Z);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">HGN-02 &middot; botol 500 ml</span>
+    <h3 class="pcard__nama">Hand Sanitizer 500ml</h3>
+    <p class="pcard__desc">Kadar alkohol 70%, ditambah pelembap agar tangan tidak kering.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 42.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Hand%20Sanitizer%20500ml%20%28botol%20500%20ml%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="higienis" data-katnama="Higienis & P3K" data-satuan="botol 250 ml" data-cari="sabun antiseptik membunuh kuman dan bakteri. tersedia varian refill lebih hemat. hgn-03">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/higienis-sabun-card.webp" width="600" height="600" alt="Sabun Antiseptik" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBBQb/xAAeEAACAgICAwAAAAAAAAAAAAABAgADBBEFEiEiJf/EABUBAQEAAAAAAAAAAAAAAAAAAAMC/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAExAhL/2gAMAwEAAhEDEQA/AGVy6u46+dxw2hiuhMti2itezH2Ebx+WdrwpOljrqgtYiK7nB9JtQkcrYLMxiDsQgulqH//Z);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">HGN-03 &middot; botol 250 ml</span>
+    <h3 class="pcard__nama">Sabun Antiseptik</h3>
+    <p class="pcard__desc">Membunuh kuman dan bakteri. Tersedia varian refill lebih hemat.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 28.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Sabun%20Antiseptik%20%28botol%20250%20ml%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="higienis" data-katnama="Higienis & P3K" data-satuan="toples 50 g" data-cari="kapas wadah kaca kapas putih bersih dalam wadah kaca tertutup, aman dari debu. hgn-04">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/higienis-kapas-card.webp" width="600" height="600" alt="Kapas Wadah Kaca" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDBv/EABsQAQACAwEBAAAAAAAAAAAAAAEAAhEhMQMT/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDpCwG2CxM/mW6y6+ZUxmBfSI0GolR//9k=);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">HGN-04 &middot; toples 50 g</span>
+    <h3 class="pcard__nama">Kapas Wadah Kaca</h3>
+    <p class="pcard__desc">Kapas putih bersih dalam wadah kaca tertutup, aman dari debu.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 25.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Kapas%20Wadah%20Kaca%20%28toples%2050%20g%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+<article class="pcard" data-kat="higienis" data-katnama="Higienis & P3K" data-satuan="set" data-cari="set sikat gigi &amp; oral care sikat gigi bulu halus, benang gigi, dan pembersih lidah dalam satu set. hgn-05">
+  <div class="pcard__foto"><img class="pcard__img" src="assets/webp/higienis-sikat-card.webp" width="600" height="600" alt="Set Sikat Gigi &amp; Oral Care" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwb/xAAcEAEAAwACAwAAAAAAAAAAAAABAAIDETEUIUH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABcRAAMBAAAAAAAAAAAAAAAAAAABEVH/2gAMAwEAAhEDEQA/ANBS7klLvt6lF8tfJLHUd1yrojbsk8SZo0XTV2PhCMQlJQGz/9k=);background-size:cover"></div>
+  <div class="pcard__body">
+    <span class="pcard__code">HGN-05 &middot; set</span>
+    <h3 class="pcard__nama">Set Sikat Gigi & Oral Care</h3>
+    <p class="pcard__desc">Sikat gigi bulu halus, benang gigi, dan pembersih lidah dalam satu set.</p>
+    <div class="pcard__foot">
+      <span class="pcard__harga">Rp 39.000</span>
+      <span class="pcard__acts">
+        <button type="button" class="pcard__more">Keterangan</button>
+        <a class="pcard__cta" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20stok%20Set%20Sikat%20Gigi%20%26%20Oral%20Care%20%28set%29.%20Apakah%20tersedia%3F" target="_blank" rel="noopener">Cek stok</a>
+      </span>
+    </div>
+  </div>
+</article>
+          </div>
+
+          <div class="cat__empty" id="kosong">
+            <h3>Tidak ada yang cocok</h3>
+            <p>Coba kata lain, atau tanyakan langsung — barang yang tidak ada di daftar sering masih bisa kami pesankan.</p>
+            <a class="btn btn--green" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20ketersediaan%20obat." target="_blank" rel="noopener">Tanya lewat WhatsApp</a>
+          </div>
+
+          <div class="cat__more" id="lebih">
+            <button type="button" id="btnLebih">Tampilkan semua 23 barang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Layanan: baris editorial bernomor -->
+<section class="section section--paper" id="layanan">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__row">
+        <p class="eyebrow">Layanan</p>
+        <p class="mono-label">4 hal yang paling sering diminta</p>
+      </div>
+      <h2>Bukan cuma jual obat</h2>
+      <p class="lede">
+        Yang paling sering ditanyakan pelanggan, dan kami kerjakan tiap hari.
+      </p>
+    </div>
+
+    <div class="svc__list">
+<article class="svc">
+  <span class="svc__n">01</span>
+  <div class="svc__txt">
+    <h3>Tebus Resep Dokter</h3>
+    <p>Kirim foto resep lewat WhatsApp, obat disiapkan lalu diambil atau diantar. Resep obat keras kami catat sesuai aturan.</p>
+  </div>
+  <div class="svc__foto"><picture><source type="image/webp" srcset="assets/webp/farmasi-rak-480.webp 480w, assets/webp/farmasi-rak-800.webp 800w, assets/webp/farmasi-rak-1200.webp 1200w" sizes="(max-width:880px) 92vw, 300px"><img class="svc__img" src="assets/webp/farmasi-rak-800.webp" width="1200" height="800" alt="Tebus Resep Dokter" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EACAQAAICAgICAwAAAAAAAAAAAAECAAMREgQhBRMjMVH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/EABURAQEAAAAAAAAAAAAAAAAAAAAx/9oADAMBAAIRAxEAPwBDyr/ImMEZmvNR+VWmn0q9iTL6/YMq+SJS8dayIwbs6yphKsGpwqtr+wiVl9ll7a9EGEC//9k=);background-size:cover;aspect-ratio:4/3;height:auto;object-fit:cover"></picture></div>
+</article>
+<article class="svc">
+  <span class="svc__n">02</span>
+  <div class="svc__txt">
+    <h3>Konsultasi Apoteker</h3>
+    <p>Bingung bedanya dua obat, atau dosis untuk anak? Tanya langsung ke apoteker berlisensi, tanpa biaya.</p>
+  </div>
+  <div class="svc__foto"><picture><source type="image/webp" srcset="assets/webp/konsul-apoteker-480.webp 480w, assets/webp/konsul-apoteker-800.webp 800w, assets/webp/konsul-apoteker-1200.webp 1200w" sizes="(max-width:880px) 92vw, 300px"><img class="svc__img" src="assets/webp/konsul-apoteker-800.webp" width="1200" height="799" alt="Konsultasi Apoteker" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMGBf/EACAQAAEEAQQDAAAAAAAAAAAAAAEAAgMEEQUSEyEiI2H/xAAVAQEBAAAAAAAAAAAAAAAAAAAABP/EABgRAQEBAQEAAAAAAAAAAAAAAAEAEQIS/9oADAMBAAIRAxEAPwB1md8LY+PDQtehqTTGIwPIDtSWpyP5GDJACdFaNUskJJDh2pjeQqEGo235xcdub6kJFG0y3VywdfUJqTyN/9k=);background-size:cover;aspect-ratio:4/3;height:auto;object-fit:cover"></picture></div>
+</article>
+<article class="svc">
+  <span class="svc__n">03</span>
+  <div class="svc__txt">
+    <h3>Cek Tekanan & Gula Darah</h3>
+    <p>Pemeriksaan singkat di tempat, gratis untuk pembeli. Hasilnya dicatat supaya bisa dipantau dari bulan ke bulan.</p>
+  </div>
+  <div class="svc__foto"><picture><source type="image/webp" srcset="assets/webp/farmasi-pelanggan-480.webp 480w, assets/webp/farmasi-pelanggan-800.webp 800w, assets/webp/farmasi-pelanggan-1200.webp 1200w" sizes="(max-width:880px) 92vw, 300px"><img class="svc__img" src="assets/webp/farmasi-pelanggan-800.webp" width="1200" height="800" alt="Cek Tekanan &amp; Gula Darah" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFA//EAB4QAAICAQUBAAAAAAAAAAAAAAECAAMRBBIhIlEx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIR/9oADAMBAAIRAxEAPwCKKGwVYdiYjUKm2huTLLILaW+A+yPaFQkA7mhzhZpMwvOpwe3A8hGNZYgwVBhAP//Z);background-size:cover;aspect-ratio:4/3;height:auto;object-fit:cover"></picture></div>
+</article>
+<article class="svc">
+  <span class="svc__n">04</span>
+  <div class="svc__txt">
+    <h3>Alat Kesehatan & Sewa</h3>
+    <p>Tensimeter, nebulizer, termometer, kursi roda. Sebagian bisa disewa harian kalau hanya butuh sementara.</p>
+  </div>
+  <div class="svc__foto"><picture><source type="image/webp" srcset="assets/webp/alkes-tensi-digital-480.webp 480w, assets/webp/alkes-tensi-digital-800.webp 800w, assets/webp/alkes-tensi-digital-1200.webp 1200w" sizes="(max-width:880px) 92vw, 300px"><img class="svc__img" src="assets/webp/alkes-tensi-digital-800.webp" width="1200" height="800" alt="Alat Kesehatan &amp; Sewa" loading="lazy" decoding="async" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAABA//EAB4QAAEEAgMBAAAAAAAAAAAAAAEAAgMRBBIFITEy/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oADAMBAAIRAxEAPwBLgzExWCNoTeO2liBFLjkwW3WrrxN4uPSCiKTHIpshjCJA1xGpUtd9d+jxSxdoMv/Z);background-size:cover;aspect-ratio:4/3;height:auto;object-fit:cover"></picture></div>
+</article>
+    </div>
+  </div>
+</section>
+
+<!-- Alur: pita proses -->
+<section class="section section--sand" id="alur">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__row">
+        <p class="eyebrow">Cara pesan</p>
+        <p class="mono-label">Rata-rata dibalas &lt; 15 menit di jam buka</p>
+      </div>
+      <h2>Tiga langkah, tanpa aplikasi</h2>
+    </div>
+    <ol class="steps">
+<li class="step">
+  <span class="step__n">LANGKAH 1</span>
+  <div>
+    <h3>Kirim daftar atau foto resep</h3>
+    <p>Sebutkan nama obat dan jumlahnya. Kalau pakai resep, foto yang terbaca sudah cukup.</p>
+  </div>
+</li>
+<li class="step">
+  <span class="step__n">LANGKAH 2</span>
+  <div>
+    <h3>Kami konfirmasi ketersediaan &amp; total</h3>
+    <p>Dibalas apoteker di jam buka. Kalau ada yang kosong, kami tawarkan padanannya.</p>
+  </div>
+</li>
+<li class="step">
+  <span class="step__n">LANGKAH 3</span>
+  <div>
+    <h3>Ambil di toko atau minta diantar</h3>
+    <p>Bayar di kasir atau transfer/QRIS. Antar sekitar Dipatiukur, bisa juga kurir instan.</p>
+  </div>
+</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--band" id="kunjungi">
+  <div class="wrap visit">
+    <div>
+      <div class="shead__row" style="border-bottom:0;padding-bottom:0">
+        <p class="eyebrow">Kunjungi</p>
+        <p class="mono-label" style="color:var(--muted-inv)">Sejak 2009 di jalan yang sama</p>
+      </div>
+      <h2 style="margin-top:10px">Mampir, atau chat dulu</h2>
+      <p class="lede" style="color:var(--muted-inv);margin-top:12px">
+        Kalau ragu barangnya ada, chat dulu. Kami balas di jam buka dan sebutkan
+        apa yang tersedia beserta harganya.
+      </p>
+
+      <div class="visit__rows">
+        <div class="vrow">
+          <span class="vrow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#3fb98a" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <b>Alamat</b>
+            <p>Jl. Dipatiukur No. 112, Bandung, Jawa Barat 40132<br>Seberang kampus, dekat halte Dipatiukur.</p>
+          </div>
+        </div>
+        <div class="vrow">
+          <span class="vrow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#3fb98a" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></span>
+          <div>
+            <b>Telepon &amp; WhatsApp</b>
+            <p><a href="tel:+6281234567890">0812-3456-7890</a> — telepon<br>
+            <a href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20bertanya." target="_blank" rel="noopener">Chat WhatsApp</a> — cek stok &amp; kirim resep</p>
+          </div>
+        </div>
+        <div class="vrow">
+          <span class="vrow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#3fb98a" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <div>
+            <b>Jam buka <span id="statusBuka2" style="font-weight:400;color:var(--muted-inv)"></span></b>
+            <div class="hours"><span>Senin – Sabtu</span><b>07.00 – 22.00</b></div>
+            <div class="hours"><span>Minggu</span><b>08.00 – 20.00</b></div>
+            <div class="hours"><span>Libur nasional</span><b>08.00 – 18.00</b></div>
+          </div>
+        </div>
+        <div class="vrow" style="border-bottom:0">
+          <span class="vrow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="#3fb98a" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3h2l2.4 12.3a2 2 0 002 1.7h7.7a2 2 0 002-1.6L21 8H6"/><circle cx="9.5" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/></svg></span>
+          <div>
+            <b>Pembayaran</b>
+            <p>Tunai · Transfer bank · QRIS · Kartu debit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <figure class="visit__map">
+      <iframe
+        title="Peta lokasi Apotek Waluya di Jl. Dipatiukur No. 112, Bandung"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=107.6047%2C-6.9197%2C107.6147%2C-6.9097&amp;layer=mapnik&amp;marker=-6.9147%2C107.6097"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <figcaption>
+        <span>Jl. Dipatiukur No. 112, Bandung</span>
+        <a href="https://www.openstreetmap.org/?mlat=-6.9147&amp;mlon=107.6097#map=17/-6.9147/107.6097" target="_blank" rel="noopener">Buka peta besar</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__about">
+      <a class="brand" href="#atas" style="color:inherit">
+        <span class="brand__mark" aria-hidden="true">W</span>
+        <span class="brand__txt">
+          <b>Apotek Waluya</b>
+          <span style="color:var(--muted-inv)">Dipatiukur &middot; Bandung</span>
+        </span>
+      </a>
+      <p>
+        Apotek keluarga yang melayani tebus resep, konsultasi apoteker, dan
+        penyewaan alat kesehatan untuk warga sekitar Dipatiukur.
+      </p>
+    </div>
+
+    <div>
+      <h4>Halaman</h4>
+      <ul>
+        <li><a href="#katalog">Katalog barang</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#alur">Cara pesan</a></li>
+        <li><a href="#kunjungi">Alamat &amp; jam buka</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Hubungi</h4>
+      <ul>
+        <li><a href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20bertanya." target="_blank" rel="noopener">WhatsApp 0812-3456-7890</a></li>
+        <li><a href="tel:+6281234567890">Telepon toko</a></li>
+        <li><a href="https://www.openstreetmap.org/?mlat=-6.9147&amp;mlon=107.6097#map=17/-6.9147/107.6097" target="_blank" rel="noopener">Petunjuk arah</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap foot__bot">
+    <span>&copy; 2026 Apotek Waluya &middot; Jl. Dipatiukur No. 112, Bandung 40132</span>
+    <span>Harga dapat berubah &middot; ketersediaan dikonfirmasi lewat WhatsApp</span>
+  </div>
+</footer>
+
+<a class="wafloat" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20bertanya." target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a12 12 0 01-5.9-5.2c-.4-.7-.6-1.5-.4-2.2.1-.5.7-1.4 1.2-1.6.3-.1.6-.1.8.1l.9 1.6c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4-.1.6.4.8 1.4 1.9 2.3 2.4.2.1.5.1.6-.1l.6-.6c.2-.2.4-.3.7-.2l1.6.8c.3.2.4.5.3.8z"/></svg>
+  <span>Chat WhatsApp</span>
+</a>
+
+<dialog class="pdetail" id="detail" aria-labelledby="detailNama">
+  <div class="pdetail__in">
+    <div class="pdetail__top">
+      <div>
+        <p class="pdetail__code" id="detailKode"></p>
+        <h3 id="detailNama"></h3>
+      </div>
+      <button type="button" class="pdetail__x" id="detailTutup" aria-label="Tutup keterangan">&times;</button>
+    </div>
+    <img class="pdetail__foto" id="detailFoto" src="" alt="" width="600" height="600">
+    <p class="pdetail__desc" id="detailDesc"></p>
+    <div class="pdetail__rows">
+      <div><span>Isi</span><b id="detailIsi"></b></div>
+      <div><span>Harga toko</span><b id="detailHarga"></b></div>
+      <div><span>Kategori</span><b id="detailKat"></b></div>
+    </div>
+    <div class="pdetail__cta">
+      <a class="btn btn--green" id="detailWa" href="#" target="_blank" rel="noopener">Cek stok lewat WhatsApp</a>
+      <button type="button" class="btn btn--ghost" id="detailTutup2">Tutup</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "6281234567890";
+
+  /* ---------- jam buka: Senin-Sabtu 07-22, Minggu 08-20 (WIB) ----------
+     Toko ada di Bandung, jadi jam buka HARUS dihitung di zona Asia/Jakarta.
+     Kalau memakai waktu lokal pengunjung, statusnya salah untuk siapa pun
+     yang membuka halaman dari luar WIB. */
+  function wib(){
+    var p = new Intl.DateTimeFormat("en-GB", {
+      timeZone:"Asia/Jakarta", hour12:false,
+      weekday:"short", hour:"2-digit", minute:"2-digit"
+    }).formatToParts(new Date());
+    var g = {};
+    p.forEach(function(x){ g[x.type] = x.value; });
+    return {hari:g.weekday, jam:parseInt(g.hour,10), menit:parseInt(g.minute,10)};
+  }
+  function terapkanStatus(){
+    var w = wib();
+    var minggu = (w.hari === "Sun");
+    var buka = minggu ? 8 : 7;
+    var tutup = minggu ? 20 : 22;
+    var now = w.jam + w.menit/60;
+    var terbuka = now >= buka && now < tutup;
+    var pad = function(n){ return (n < 10 ? "0" : "") + n; };
+    var teks;
+    if (terbuka){
+      teks = "Buka sekarang \u00b7 sampai " + pad(tutup) + ".00";
+    } else {
+      // kalau hari ini sudah tutup, sebut jam buka hari berikutnya
+      var besokMinggu = !minggu && w.hari === "Sat";
+      var bukaBerikut = besokMinggu ? 8 : buka;
+      teks = "Tutup \u00b7 buka " + (besokMinggu ? "besok " : "") + pad(bukaBerikut) + ".00";
+    }
+    var el = document.getElementById("statusBuka");
+    var t1 = document.getElementById("statusTeks");
+    var t2 = document.getElementById("statusBuka2");
+    if (el) el.classList.toggle("is-closed", !terbuka);
+    if (t1) t1.textContent = teks;
+    if (t2) t2.textContent = "\u2014 " + (terbuka ? "buka sekarang" : "sedang tutup");
+  }
+  terapkanStatus();
+  setInterval(terapkanStatus, 60000);
+
+  /* ---------- katalog: cari + filter + muat lebih banyak ---------- */
+  var grid    = document.getElementById("pgrid");
+  var kartu   = Array.prototype.slice.call(grid.querySelectorAll(".pcard"));
+  var tombol  = Array.prototype.slice.call(document.querySelectorAll(".rail__list button"));
+  var cari    = document.getElementById("cari");
+  var kosong  = document.getElementById("kosong");
+  var blokLebih = document.getElementById("lebih");
+  var btnLebih  = document.getElementById("btnLebih");
+  var hasil   = document.getElementById("hasilJumlah");
+  var live    = document.getElementById("katalogLive");
+
+  var BATAS = 8;              // kartu yang tampil sebelum "tampilkan semua"
+  var filter = "all";
+  var semua  = false;
+
+  function cocok(k){
+    if (filter !== "all" && k.dataset.kat !== filter) return false;
+    var q = (cari.value || "").trim().toLowerCase();
+    if (!q) return true;
+    return k.dataset.cari.indexOf(q) !== -1;
+  }
+
+  function render(){
+    var lolos = [], i, k;
+    for (i = 0; i < kartu.length; i++){
+      k = kartu[i];
+      if (cocok(k)) lolos.push(k);
+    }
+    var tampil = semua ? lolos.length : Math.min(BATAS, lolos.length);
+
+    for (i = 0; i < kartu.length; i++) kartu[i].hidden = true;
+    for (i = 0; i < tampil; i++) lolos[i].hidden = false;
+
+    if (hasil) hasil.textContent = lolos.length;
+    if (kosong) kosong.classList.toggle("is-on", lolos.length === 0);
+    if (blokLebih){
+      var perlu = lolos.length > BATAS;
+      blokLebih.hidden = !perlu || semua;
+      if (btnLebih && perlu) btnLebih.textContent = "Tampilkan semua " + lolos.length + " barang";
+    }
+    if (live){
+      var namaKat = "semua kategori";
+      for (i = 0; i < tombol.length; i++){
+        if (tombol[i].dataset.filter === filter) namaKat = tombol[i].textContent.replace(/\d+$/,"").trim();
+      }
+      live.textContent = lolos.length + " barang \u00b7 " + namaKat;
+    }
+  }
+
+  tombol.forEach(function(b){
+    b.addEventListener("click", function(){
+      filter = b.dataset.filter;
+      semua = false;
+      tombol.forEach(function(o){ o.setAttribute("aria-pressed", String(o === b)); });
+      render();
+    });
+  });
+
+  if (cari){
+    cari.addEventListener("input", function(){ semua = false; render(); });
+  }
+  if (btnLebih){
+    btnLebih.addEventListener("click", function(){ semua = true; render(); });
+  }
+  render();
+
+  /* ---------- panel detail produk ---------- */
+  var dlg = document.getElementById("detail");
+  if (dlg && typeof dlg.showModal === "function"){
+    var f = {
+      kode: document.getElementById("detailKode"),
+      nama: document.getElementById("detailNama"),
+      foto: document.getElementById("detailFoto"),
+      desc: document.getElementById("detailDesc"),
+      isi:  document.getElementById("detailIsi"),
+      harga:document.getElementById("detailHarga"),
+      kat:  document.getElementById("detailKat"),
+      wa:   document.getElementById("detailWa")
+    };
+
+    function buka(k){
+      var img  = k.querySelector(".pcard__img");
+      var nama = k.querySelector(".pcard__nama").textContent.trim();
+      var desc = k.querySelector(".pcard__desc").textContent.trim();
+      var kode = k.querySelector(".pcard__code").textContent.trim();
+      var isi  = k.dataset.satuan || "";
+      f.kode.textContent  = kode;
+      f.nama.textContent  = nama;
+      f.foto.src = img.getAttribute("src");
+      f.foto.alt = nama;
+      f.desc.textContent  = desc;
+      f.isi.textContent   = isi;
+      f.harga.textContent = k.querySelector(".pcard__harga").textContent.trim();
+      f.kat.textContent   = k.dataset.katnama || "";
+      f.wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(
+        "Halo Apotek Waluya, saya mau tanya stok " + nama + " (" + isi + "). Apakah tersedia?");
+      dlg.showModal();
+    }
+
+    kartu.forEach(function(k){
+      k.addEventListener("click", function(ev){
+        if (ev.target.closest("a")) return;      // biarkan tautan WhatsApp jalan
+        buka(k);
+      });
+      var m = k.querySelector(".pcard__more");
+      if (m) m.addEventListener("click", function(ev){
+        ev.stopPropagation();                    // jangan buka dua kali
+        buka(k);
+      });
+    });
+
+    document.getElementById("detailTutup").addEventListener("click", function(){ dlg.close(); });
+    document.getElementById("detailTutup2").addEventListener("click", function(){ dlg.close(); });
+    dlg.addEventListener("click", function(ev){ if (ev.target === dlg) dlg.close(); });
+  }
+})();
+</script>
+</body>
+</html>

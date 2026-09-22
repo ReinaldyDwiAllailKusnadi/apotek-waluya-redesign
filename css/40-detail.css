@@ -1,0 +1,46 @@
+/* ============================================================
+   40-detail.css — panel detail produk (<dialog>)
+   Muncul saat kartu diklik. Karena kartu di mobile 2 kolom dan
+   deskripsi disembunyikan, panel ini yang membawa detail penuh.
+   ============================================================ */
+
+.pdetail{
+  width:min(560px,calc(100vw - 2*var(--gutter)));
+  padding:0;border:1px solid var(--ink);border-radius:var(--r);
+  background:var(--card);color:var(--ink);
+}
+.pdetail::backdrop{background:rgba(20,24,26,.55)}
+.pdetail__in{display:grid;gap:14px;padding:18px}
+.pdetail__top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.pdetail__foto{width:100%;aspect-ratio:4/3;object-fit:cover;border:var(--hair);border-radius:var(--r)}
+.pdetail__code{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pdetail h3{font-size:1.24rem;letter-spacing:-.02em}
+.pdetail__desc{color:var(--muted);font-size:.94rem}
+.pdetail__rows{border-top:var(--hair)}
+.pdetail__rows div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:var(--hair)}
+.pdetail__rows span{font-family:var(--mono);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.pdetail__rows b{font-family:var(--mono);font-size:.92rem}
+.pdetail__x{
+  flex:0 0 auto;width:40px;height:40px;display:grid;place-items:center;
+  background:none;border:1px solid var(--rule-2);border-radius:var(--r);
+  cursor:pointer;font-size:1.1rem;line-height:1;
+}
+.pdetail__x:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pdetail__cta{display:grid;gap:8px}
+.pdetail__cta .btn{justify-content:center}
+
+/* tombol WhatsApp mengambang — di mobile jadi bulat 52px, dan blok terakhir
+   halaman diberi padding bawah supaya tidak ada teks yang tertutup */
+.wafloat{
+  position:fixed;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);z-index:40;
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:52px;padding:0 18px;border-radius:var(--r);
+  background:var(--green);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:1px solid var(--green-d);
+}
+.wafloat:hover{background:var(--green-d)}
+.wafloat svg{width:21px;height:21px;flex:0 0 auto}
+@media (max-width:600px){
+  .wafloat{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%}
+  .wafloat span{display:none}
+}

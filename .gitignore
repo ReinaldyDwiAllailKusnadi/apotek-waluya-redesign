@@ -1,0 +1,33 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Screenshot & artefak QA (bukan bagian dari website)
+*.png
+!assets/**/*.png
+qa/
+
+# Foto master (JPEG) — tidak perlu di repo.
+# Yang dipakai website adalah varian WebP di assets/webp/.
+assets/img/
+assets/photo-manifest.json
+
+# Pool kandidat foto (hasil riset, tidak dipakai website)
+_pool/
+_pool2/
+_pool3/
+_pool*.json
+_ids.json
+_titles.json
+_titles2.json
+_pool_ok.json
+_ok_sorted.json
+
+# Cache / scratch
+__pycache__/
+*.pyc
+.venv/
+venv/

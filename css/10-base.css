@@ -1,0 +1,143 @@
+/* ============================================================
+   10-base.css — token, reset, tipografi, utilitas
+   Arah desain: "label apotek" — presisi counter farmasi, bukan
+   template SaaS. Radius hampir nol, hairline sebagai pemisah,
+   mono hanya untuk data (kode rak, harga, jam, jumlah).
+   ============================================================ */
+
+:root{
+  /* permukaan */
+  --paper:#f4f1ea;      /* kertas label, hangat bukan putih bersih */
+  --card:#fffdf7;
+  --sand:#e9e3d7;
+  --band:#14181a;
+
+  /* tinta */
+  --ink:#14181a;
+  --ink-2:#39423f;
+  --muted:#5a625f;      /* >=4.5:1 di --paper (diverifikasi skrip) */
+  --muted-inv:#c3d5cd;  /* >=4.5:1 di --band */
+
+  /* garis */
+  --rule:#d9d3c5;
+  --rule-2:#c3bcab;
+  --rule-inv:#39423f;
+
+  /* hijau apotek — satu aksen saja */
+  --green:#12684a;      /* teks putih di atasnya lolos AA */
+  --green-d:#0c4a34;
+  --green-l:#3fb98a;    /* hanya untuk garis/ikon di atas gelap */
+
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --r:2px;              /* sengaja hampir kotak */
+  --gutter:clamp(18px,4vw,34px);
+  --maxw:1180px;
+
+  --hair:1px solid var(--rule);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg,iframe{max-width:100%}
+img{display:block;height:auto}
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(2rem,1.35rem + 2.6vw,3.45rem);letter-spacing:-.035em}
+h2{font-size:clamp(1.5rem,1.15rem + 1.5vw,2.2rem)}
+h3{font-size:1.06rem;letter-spacing:-.01em;line-height:1.25}
+p{margin:0}
+a{color:inherit}
+ul,ol{margin:0;padding:0;list-style:none}
+button,input,select{font:inherit;color:inherit}
+figure{margin:0}
+
+/* setiap fokus keyboard harus terlihat: cincin hijau tua, offset 2px */
+:focus-visible{outline:2px solid var(--green-d);outline-offset:2px;border-radius:1px}
+:focus:not(:focus-visible){outline:none}
+
+.wrap{
+  max-width:var(--maxw);
+  margin-inline:auto;
+  /* SATU-SATUNYA tempat gutter horizontal ditetapkan. Blok di dalam section
+     hanya boleh menambah padding vertikal — kalau tidak, blok itu duduk
+     lebih kiri/kanan dari section lain (bug 22px di versi sebelumnya). */
+  padding-inline:var(--gutter);
+}
+.section{padding-block:clamp(46px,6vw,84px)}
+.section--paper{background:var(--paper)}
+.section--card{background:var(--card)}
+.section--sand{background:var(--sand)}
+.section--band{background:var(--band);color:#f2f5f3}
+.section--band .muted{color:var(--muted-inv)}
+
+.muted{color:var(--muted)}
+.lede{font-size:clamp(1rem,.96rem + .3vw,1.16rem);color:var(--muted);max-width:56ch}
+.rule{border:0;border-top:var(--hair);margin:0}
+
+/* label kecil mono — dipakai untuk eyebrow, kode rak, keterangan */
+.eyebrow,.mono-label{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+}
+.section--band .eyebrow{color:var(--green-l)}
+
+/* judul section: label mono di atas, judul, lalu aturan penuh */
+.shead{display:grid;gap:10px;padding-bottom:18px;border-bottom:var(--hair);margin-bottom:clamp(24px,3vw,38px)}
+.shead__row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;justify-content:space-between}
+.shead p{max-width:52ch}
+
+/* tombol: persegi, tebal huruf sedang, tanpa gradien/bayangan */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:44px;padding:11px 18px;
+  border:1px solid var(--ink);
+  border-radius:var(--r);
+  background:var(--ink);color:#fff;
+  font-weight:600;font-size:.94rem;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;
+}
+.btn:hover{background:var(--green-d);border-color:var(--green-d)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--rule-2)}
+.btn--ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn--green{background:var(--green);border-color:var(--green)}
+.btn--green:hover{background:var(--green-d);border-color:var(--green-d)}
+
+/* tautan teks bergaris — aksi sekunder, tidak perlu jadi tombol */
+.tlink{
+  display:inline-flex;align-items:center;gap:7px;
+  font-weight:600;font-size:.94rem;color:var(--green);
+  text-decoration:none;border-bottom:1px solid currentColor;
+  padding-bottom:2px;
+}
+.tlink:hover{color:var(--green-d)}
+
+/* medan input: kotak tegas, label mono di atasnya */
+.field{display:grid;gap:6px}
+.field>label{font-family:var(--mono);font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{
+  width:100%;min-height:48px;padding:11px 13px;
+  background:var(--card);border:1px solid var(--rule-2);border-radius:var(--r);
+}
+.field input:focus-visible,.field select:focus-visible{outline:2px solid var(--green-d);outline-offset:1px}
+
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:50;background:var(--ink);color:#fff;padding:10px 14px;border-radius:var(--r)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}

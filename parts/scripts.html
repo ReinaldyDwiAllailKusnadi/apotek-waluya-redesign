@@ -1,0 +1,187 @@
+<dialog class="pdetail" id="detail" aria-labelledby="detailNama">
+  <div class="pdetail__in">
+    <div class="pdetail__top">
+      <div>
+        <p class="pdetail__code" id="detailKode"></p>
+        <h3 id="detailNama"></h3>
+      </div>
+      <button type="button" class="pdetail__x" id="detailTutup" aria-label="Tutup keterangan">&times;</button>
+    </div>
+    <img class="pdetail__foto" id="detailFoto" src="" alt="" width="600" height="600">
+    <p class="pdetail__desc" id="detailDesc"></p>
+    <div class="pdetail__rows">
+      <div><span>Isi</span><b id="detailIsi"></b></div>
+      <div><span>Harga toko</span><b id="detailHarga"></b></div>
+      <div><span>Kategori</span><b id="detailKat"></b></div>
+    </div>
+    <div class="pdetail__cta">
+      <a class="btn btn--green" id="detailWa" href="#" target="_blank" rel="noopener">Cek stok lewat WhatsApp</a>
+      <button type="button" class="btn btn--ghost" id="detailTutup2">Tutup</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "{{WA}}";
+
+  /* ---------- jam buka: Senin-Sabtu 07-22, Minggu 08-20 (WIB) ----------
+     Toko ada di Bandung, jadi jam buka HARUS dihitung di zona Asia/Jakarta.
+     Kalau memakai waktu lokal pengunjung, statusnya salah untuk siapa pun
+     yang membuka halaman dari luar WIB. */
+  function wib(){
+    var p = new Intl.DateTimeFormat("en-GB", {
+      timeZone:"Asia/Jakarta", hour12:false,
+      weekday:"short", hour:"2-digit", minute:"2-digit"
+    }).formatToParts(new Date());
+    var g = {};
+    p.forEach(function(x){ g[x.type] = x.value; });
+    return {hari:g.weekday, jam:parseInt(g.hour,10), menit:parseInt(g.minute,10)};
+  }
+  function terapkanStatus(){
+    var w = wib();
+    var minggu = (w.hari === "Sun");
+    var buka = minggu ? 8 : 7;
+    var tutup = minggu ? 20 : 22;
+    var now = w.jam + w.menit/60;
+    var terbuka = now >= buka && now < tutup;
+    var pad = function(n){ return (n < 10 ? "0" : "") + n; };
+    var teks;
+    if (terbuka){
+      teks = "Buka sekarang \u00b7 sampai " + pad(tutup) + ".00";
+    } else {
+      // kalau hari ini sudah tutup, sebut jam buka hari berikutnya
+      var besokMinggu = !minggu && w.hari === "Sat";
+      var bukaBerikut = besokMinggu ? 8 : buka;
+      teks = "Tutup \u00b7 buka " + (besokMinggu ? "besok " : "") + pad(bukaBerikut) + ".00";
+    }
+    var el = document.getElementById("statusBuka");
+    var t1 = document.getElementById("statusTeks");
+    var t2 = document.getElementById("statusBuka2");
+    if (el) el.classList.toggle("is-closed", !terbuka);
+    if (t1) t1.textContent = teks;
+    if (t2) t2.textContent = "\u2014 " + (terbuka ? "buka sekarang" : "sedang tutup");
+  }
+  terapkanStatus();
+  setInterval(terapkanStatus, 60000);
+
+  /* ---------- katalog: cari + filter + muat lebih banyak ---------- */
+  var grid    = document.getElementById("pgrid");
+  var kartu   = Array.prototype.slice.call(grid.querySelectorAll(".pcard"));
+  var tombol  = Array.prototype.slice.call(document.querySelectorAll(".rail__list button"));
+  var cari    = document.getElementById("cari");
+  var kosong  = document.getElementById("kosong");
+  var blokLebih = document.getElementById("lebih");
+  var btnLebih  = document.getElementById("btnLebih");
+  var hasil   = document.getElementById("hasilJumlah");
+  var live    = document.getElementById("katalogLive");
+
+  var BATAS = 8;              // kartu yang tampil sebelum "tampilkan semua"
+  var filter = "all";
+  var semua  = false;
+
+  function cocok(k){
+    if (filter !== "all" && k.dataset.kat !== filter) return false;
+    var q = (cari.value || "").trim().toLowerCase();
+    if (!q) return true;
+    return k.dataset.cari.indexOf(q) !== -1;
+  }
+
+  function render(){
+    var lolos = [], i, k;
+    for (i = 0; i < kartu.length; i++){
+      k = kartu[i];
+      if (cocok(k)) lolos.push(k);
+    }
+    var tampil = semua ? lolos.length : Math.min(BATAS, lolos.length);
+
+    for (i = 0; i < kartu.length; i++) kartu[i].hidden = true;
+    for (i = 0; i < tampil; i++) lolos[i].hidden = false;
+
+    if (hasil) hasil.textContent = lolos.length;
+    if (kosong) kosong.classList.toggle("is-on", lolos.length === 0);
+    if (blokLebih){
+      var perlu = lolos.length > BATAS;
+      blokLebih.hidden = !perlu || semua;
+      if (btnLebih && perlu) btnLebih.textContent = "Tampilkan semua " + lolos.length + " barang";
+    }
+    if (live){
+      var namaKat = "semua kategori";
+      for (i = 0; i < tombol.length; i++){
+        if (tombol[i].dataset.filter === filter) namaKat = tombol[i].textContent.replace(/\d+$/,"").trim();
+      }
+      live.textContent = lolos.length + " barang \u00b7 " + namaKat;
+    }
+  }
+
+  tombol.forEach(function(b){
+    b.addEventListener("click", function(){
+      filter = b.dataset.filter;
+      semua = false;
+      tombol.forEach(function(o){ o.setAttribute("aria-pressed", String(o === b)); });
+      render();
+    });
+  });
+
+  if (cari){
+    cari.addEventListener("input", function(){ semua = false; render(); });
+  }
+  if (btnLebih){
+    btnLebih.addEventListener("click", function(){ semua = true; render(); });
+  }
+  render();
+
+  /* ---------- panel detail produk ---------- */
+  var dlg = document.getElementById("detail");
+  if (dlg && typeof dlg.showModal === "function"){
+    var f = {
+      kode: document.getElementById("detailKode"),
+      nama: document.getElementById("detailNama"),
+      foto: document.getElementById("detailFoto"),
+      desc: document.getElementById("detailDesc"),
+      isi:  document.getElementById("detailIsi"),
+      harga:document.getElementById("detailHarga"),
+      kat:  document.getElementById("detailKat"),
+      wa:   document.getElementById("detailWa")
+    };
+
+    function buka(k){
+      var img  = k.querySelector(".pcard__img");
+      var nama = k.querySelector(".pcard__nama").textContent.trim();
+      var desc = k.querySelector(".pcard__desc").textContent.trim();
+      var kode = k.querySelector(".pcard__code").textContent.trim();
+      var isi  = k.dataset.satuan || "";
+      f.kode.textContent  = kode;
+      f.nama.textContent  = nama;
+      f.foto.src = img.getAttribute("src");
+      f.foto.alt = nama;
+      f.desc.textContent  = desc;
+      f.isi.textContent   = isi;
+      f.harga.textContent = k.querySelector(".pcard__harga").textContent.trim();
+      f.kat.textContent   = k.dataset.katnama || "";
+      f.wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(
+        "Halo Apotek Waluya, saya mau tanya stok " + nama + " (" + isi + "). Apakah tersedia?");
+      dlg.showModal();
+    }
+
+    kartu.forEach(function(k){
+      k.addEventListener("click", function(ev){
+        if (ev.target.closest("a")) return;      // biarkan tautan WhatsApp jalan
+        buka(k);
+      });
+      var m = k.querySelector(".pcard__more");
+      if (m) m.addEventListener("click", function(ev){
+        ev.stopPropagation();                    // jangan buka dua kali
+        buka(k);
+      });
+    });
+
+    document.getElementById("detailTutup").addEventListener("click", function(){ dlg.close(); });
+    document.getElementById("detailTutup2").addEventListener("click", function(){ dlg.close(); });
+    dlg.addEventListener("click", function(ev){ if (ev.target === dlg) dlg.close(); });
+  }
+})();
+</script>
+</body>
+</html>

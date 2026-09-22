@@ -1,0 +1,105 @@
+<main id="atas">
+
+  <!-- Blok pembuka: papan counter, bukan hero tengah -->
+  <section class="open">
+    <div class="wrap open__grid">
+      <div>
+        <p class="eyebrow open__kicker">Apotek keluarga &middot; sejak 2009</p>
+        <h1>Obat yang kamu cari, dicek dulu sebelum berangkat.</h1>
+        <p class="lede open__lede">
+          Kirim nama obat atau foto resep lewat WhatsApp. Kami balas apa yang tersedia,
+          harganya, lalu kamu ambil di toko atau minta diantar.
+        </p>
+        <div class="open__cta">
+          <a class="btn btn--green" href="https://wa.me/{{WA}}?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20cek%20stok%20obat." target="_blank" rel="noopener">Cek stok lewat WhatsApp</a>
+          <a class="btn btn--ghost" href="#katalog">Lihat katalog</a>
+        </div>
+
+        <div class="facts">
+          <div class="facts__row"><span class="facts__k">Alamat</span><span class="facts__v">Jl. Dipatiukur No. 112, Bandung 40132</span></div>
+          <div class="facts__row"><span class="facts__k">Buka</span><span class="facts__v">Senin–Sabtu 07.00–22.00 &middot; Minggu 08.00–20.00</span></div>
+          <div class="facts__row"><span class="facts__k">Layanan</span><span class="facts__v">Tebus resep, konsultasi apoteker, cek tensi &amp; gula darah</span></div>
+          <div class="facts__row"><span class="facts__k">Bayar</span><span class="facts__v">Tunai, transfer, QRIS, kartu debit</span></div>
+        </div>
+      </div>
+
+      <aside class="board" aria-label="Ringkasan isi apotek">
+        <div class="board__head">
+          <span class="mono-label">Isi rak</span>
+          <span class="mono-label">{{JUMLAH}} produk</span>
+        </div>
+        <div class="board__body">
+          <div class="board__cats">{{STATS}}</div>
+          <div class="board__shots">
+            {{IMG:farmasi-susun|Rak obat tersusun di Apotek Waluya|board__img|(max-width:900px) 45vw, 240px}}
+            {{IMG:farmasi-obat|Kemasan obat di rak apotek|board__img|(max-width:900px) 45vw, 240px}}
+          </div>
+        </div>
+        <p class="board__foot">Foto rak kami sendiri — bukan stok foto. Kalau barangnya tidak terlihat, tanya saja.</p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip__in">
+      <span>Melayani <b>resep dokter</b></span>
+      <span>Konsultasi <b>tanpa biaya</b></span>
+      <span>Antar sekitar <b>Dipatiukur</b></span>
+      <span>Alkes <b>bisa disewa</b></span>
+    </div>
+  </div>
+
+  <!-- SURFACE UTAMA: Explore — filter + kisi hasil -->
+  <section class="section section--card" id="katalog">
+    <div class="wrap">
+      <div class="shead">
+        <div class="shead__row">
+          <p class="eyebrow">Katalog</p>
+          <p class="mono-label" id="katalogLive" role="status" aria-live="polite"></p>
+        </div>
+        <h2>Apa saja yang ada di rak</h2>
+        <p class="lede">
+          Harga yang tercantum adalah harga toko. Ketersediaan bisa berubah tiap hari —
+          tombol <b>Cek stok</b> membuka WhatsApp dengan nama barang sudah terisi.
+        </p>
+      </div>
+
+      <div class="cat__grid">
+        <div class="rail">
+          <div class="rail__block">
+            <label class="mono-label" for="cari">Cari barang</label>
+            <div class="field">
+              <input id="cari" type="search" placeholder="cth. paracetamol, popok, tensi" autocomplete="off">
+            </div>
+          </div>
+          <div class="rail__block">
+            <p class="mono-label" id="railKatLabel">Kategori</p>
+            <div class="rail__list" role="group" aria-labelledby="railKatLabel">
+          {{KATEGORI}}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="cat__bar">
+            <p class="cat__count"><b id="hasilJumlah">{{JUMLAH}}</b> barang ditampilkan</p>
+            <p class="cat__note">Klik kartu untuk lihat keterangan lengkap.</p>
+          </div>
+
+          <div class="pgrid" id="pgrid">
+{{PRODUK}}
+          </div>
+
+          <div class="cat__empty" id="kosong">
+            <h3>Tidak ada yang cocok</h3>
+            <p>Coba kata lain, atau tanyakan langsung — barang yang tidak ada di daftar sering masih bisa kami pesankan.</p>
+            <a class="btn btn--green" href="https://wa.me/{{WA}}?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20tanya%20ketersediaan%20obat." target="_blank" rel="noopener">Tanya lewat WhatsApp</a>
+          </div>
+
+          <div class="cat__more" id="lebih">
+            <button type="button" id="btnLebih">Tampilkan semua {{JUMLAH}} barang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

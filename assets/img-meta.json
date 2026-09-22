@@ -1,0 +1,1122 @@
+{
+ "alkes-kotak-obat": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgUG/8QAIBAAAgICAgIDAAAAAAAAAAAAAQIAAwQRBSESE0FRcf/EABYBAQEBAAAAAAAAAAAAAAAAAAIDBP/EABkRAQEBAAMAAAAAAAAAAAAAAAEAAxESMf/aAAwDAQACEQMRAD8AXtwkfYLAblRwq1UN67d7+I23HNbkexWP5It86emBEz8p5W6jctmYz41h66+4TcvrS9SGEIzSLnf/2Q==",
+  "variants": {
+   "480": {
+    "file": "alkes-kotak-obat-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 10666
+   },
+   "800": {
+    "file": "alkes-kotak-obat-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 22298
+   },
+   "1200": {
+    "file": "alkes-kotak-obat-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 39468
+   }
+  },
+  "card": {
+   "file": "alkes-kotak-obat-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 19484
+  }
+ },
+ "alkes-p3k": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMCBv/EAB8QAAICAQQDAAAAAAAAAAAAAAECAAMhBBEiURITYf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDpdRXzVpcWbp18mioYZhWUDxIzAklro/IbrEW2evLDHcQP/9k=",
+  "variants": {
+   "480": {
+    "file": "alkes-p3k-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 7806
+   },
+   "800": {
+    "file": "alkes-p3k-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 17754
+   },
+   "1200": {
+    "file": "alkes-p3k-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 32174
+   }
+  },
+  "card": {
+   "file": "alkes-p3k-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 15160
+  }
+ },
+ "alkes-paket-lansia": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDBAX/xAAgEAACAgEDBQAAAAAAAAAAAAABAgADEQQSMRMhIkFh/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAARASH/2gAMAwEAAhEDEQA/AOnjVC1jY3j6ESs9hORibGUs3ySsQ4OzmZZt6qVF7dQoeBxCTr05Vy5PcwjD/9k=",
+  "variants": {
+   "480": {
+    "file": "alkes-paket-lansia-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 12228
+   },
+   "800": {
+    "file": "alkes-paket-lansia-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 25328
+   },
+   "1200": {
+    "file": "alkes-paket-lansia-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 49672
+   }
+  },
+  "card": {
+   "file": "alkes-paket-lansia-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 23012
+  }
+ },
+ "alkes-stetoskop": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAIDAQQF/8QAJBAAAgICAQMEAwAAAAAAAAAAAQIAAwQRIQUSUQYTIkExMmH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABcRAQEBAQAAAAAAAAAAAAAAAAABESH/2gAMAwEAAhEDEQA/ANvIvDKXfZ54AkumZiWXGo9wH9nRFFBp1Yo39SFGPjVoToB/MCjrjNjYTXY/y1Eo9Rl16d7eO37fmIHarCMg2BMvUhQ6Amu57QQDrcrtewY4Wt/l5Msm8S3JqV2CttZVuQYmcd3UAO3d5MRmLLpd9So8mIkFijQiIgf/2Q==",
+  "variants": {
+   "480": {
+    "file": "alkes-stetoskop-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 29508
+   },
+   "800": {
+    "file": "alkes-stetoskop-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 68926
+   },
+   "1200": {
+    "file": "alkes-stetoskop-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 149936
+   }
+  },
+  "card": {
+   "file": "alkes-stetoskop-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 37640
+  }
+ },
+ "alkes-tensi-digital": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAABA//EAB4QAAEEAgMBAAAAAAAAAAAAAAEAAgMRBBIFITEy/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oADAMBAAIRAxEAPwBLgzExWCNoTeO2liBFLjkwW3WrrxN4uPSCiKTHIpshjCJA1xGpUtd9d+jxSxdoMv/Z",
+  "variants": {
+   "480": {
+    "file": "alkes-tensi-digital-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 18476
+   },
+   "800": {
+    "file": "alkes-tensi-digital-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 36852
+   },
+   "1200": {
+    "file": "alkes-tensi-digital-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 65642
+   }
+  },
+  "card": {
+   "file": "alkes-tensi-digital-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 29676
+  }
+ },
+ "alkes-tensi-manual": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBP/EAB4QAAICAgIDAAAAAAAAAAAAAAECAAQFEQMSFEFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC7lLxpcHdRszLjc01tyrJoiPyFTzuIL21EUcSKjFg2yYRVXm+wiuh9whX/2Q==",
+  "variants": {
+   "480": {
+    "file": "alkes-tensi-manual-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 5584
+   },
+   "800": {
+    "file": "alkes-tensi-manual-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 11712
+   },
+   "1200": {
+    "file": "alkes-tensi-manual-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 36336
+   }
+  },
+  "card": {
+   "file": "alkes-tensi-manual-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 13350
+  }
+ },
+ "antasida": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EACAQAAEDAwUBAAAAAAAAAAAAAAEAAgMEERIFITFBURP/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwBWkhhxDmi59TFRCZYyD5skdFlD7xnnpXWR5M43CO2kx9Vdry0ixCFV12gxb92cdoSF/9k=",
+  "variants": {
+   "480": {
+    "file": "antasida-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 17592
+   },
+   "800": {
+    "file": "antasida-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 37176
+   },
+   "1200": {
+    "file": "antasida-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 64580
+   }
+  },
+  "card": {
+   "file": "antasida-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 29704
+  }
+ },
+ "bayi-cottonbud": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAAMEAQIG/8QAHRAAAwEBAAIDAAAAAAAAAAAAAAECEQMhMRITUf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwD1N2T/AHLTeuteBHVfFajNtakiuOqfoCXhuawKiloXSl+xtLBdJAYvxAdTOAEUWvIpytACjuZQAAH/2Q==",
+  "variants": {
+   "480": {
+    "file": "bayi-cottonbud-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 6790
+   },
+   "800": {
+    "file": "bayi-cottonbud-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 14530
+   },
+   "1200": {
+    "file": "bayi-cottonbud-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 33630
+   }
+  },
+  "card": {
+   "file": "bayi-cottonbud-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 7496
+  }
+ },
+ "bayi-dot": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwb/xAAdEAABBAMBAQAAAAAAAAAAAAACAAEDEQQhMRMS/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwDS5M3iDV1+KqRpXjcm7SnNAjhsOjtLBnmQfDhR0ol1pZhjFk9Yt9bqEY7OIO5atCcD/9k=",
+  "variants": {
+   "480": {
+    "file": "bayi-dot-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 7644
+   },
+   "800": {
+    "file": "bayi-dot-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 13992
+   },
+   "1200": {
+    "file": "bayi-dot-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 23864
+   }
+  },
+  "card": {
+   "file": "bayi-dot-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 15704
+  }
+ },
+ "bayi-krim": {
+  "ar": 1.4988,
+  "w": 1800,
+  "h": 1201,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBP/EABsQAAIDAQEBAAAAAAAAAAAAAAECAAMREkEE/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQME/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERAiH/2gAMAwEAAhEDEQA/AKiHa+R7H0qFVvTJ1dpMctpAOGU0qjPlxirb17IJwwmc/PthZjuwjmzoalP/2Q==",
+  "variants": {
+   "480": {
+    "file": "bayi-krim-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 3958
+   },
+   "800": {
+    "file": "bayi-krim-800.webp",
+    "w": 800,
+    "h": 534,
+    "bytes": 7526
+   },
+   "1200": {
+    "file": "bayi-krim-1200.webp",
+    "w": 1200,
+    "h": 801,
+    "bytes": 13092
+   }
+  },
+  "card": {
+   "file": "bayi-krim-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 7062
+  }
+ },
+ "bayi-popok": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAEDBAX/xAAfEAACAwACAgMAAAAAAAAAAAAAAQIDEQQhBTEUMkL/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAERIf/aAAwDAQACEQMRAD8A7O6QU8e2TWTXZdqZk1gCQBsnBbsjthqcYqSaOJw+ZJQSxmiXIajqb3R6nHVfXsGKPkYqvXF9AfAtrorXqKLI0Vv8oAcSn49WfRAAA//Z",
+  "variants": {
+   "480": {
+    "file": "bayi-popok-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 14976
+   },
+   "800": {
+    "file": "bayi-popok-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 30050
+   },
+   "1200": {
+    "file": "bayi-popok-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 52868
+   }
+  },
+  "card": {
+   "file": "bayi-popok-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 14104
+  }
+ },
+ "farmasi-konter": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAYCAwT/xAAfEAACAgICAwEAAAAAAAAAAAABAgAEAxEFIRIxQRP/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwCdW7XTJ4A6Y+hDkzmyBBj3on5FlMheymRW7B7jdXsL+Kj2dRSMVpGVArdnUJVyNrbkD5CQf//Z",
+  "variants": {
+   "480": {
+    "file": "farmasi-konter-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 20762
+   },
+   "800": {
+    "file": "farmasi-konter-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 40508
+   },
+   "1200": {
+    "file": "farmasi-konter-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 67606
+   }
+  },
+  "card": {
+   "file": "farmasi-konter-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 30632
+  }
+ },
+ "farmasi-lansia": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUBAwT/xAAfEAACAgEFAQEAAAAAAAAAAAABAgADBAUhIjFBERL/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/EABcRAQEBAQAAAAAAAAAAAAAAAAABMRH/2gAMAwEAAhEDEQA/AF9OnpRebAdvI8CIdLZmIJiaxuDb9SKMphV+GclT5GGqlZVywehCaHGOKy3zkISomzr/2Q==",
+  "variants": {
+   "480": {
+    "file": "farmasi-lansia-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 11526
+   },
+   "800": {
+    "file": "farmasi-lansia-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 21852
+   },
+   "1200": {
+    "file": "farmasi-lansia-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 36266
+   }
+  },
+  "card": {
+   "file": "farmasi-lansia-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 20658
+  }
+ },
+ "farmasi-obat": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAIEAwUGAf/EACAQAAICAgICAwAAAAAAAAAAAAECAAMEEQUSISIUQXH/xAAXAQEAAwAAAAAAAAAAAAAAAAACAAED/8QAGREBAQADAQAAAAAAAAAAAAAAAAECITER/9oADAMBAAIRAxEAPwCBK0r2dgBM+NbXaNowM5vKN2Qp9iV3LnCVvVskn8klirjfHV4yBonmNYq67GIgaLDwlCatEkwFR61ga3IY+X3PVpQys9qLmUj7gmmt22tdrteGY6URKWHlfJYBjoRFBrDiH2Eo8x4yDEQTh3qHH2MtgAPgxERBX//Z",
+  "variants": {
+   "480": {
+    "file": "farmasi-obat-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 15040
+   },
+   "800": {
+    "file": "farmasi-obat-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 27746
+   },
+   "1200": {
+    "file": "farmasi-obat-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 47380
+   }
+  },
+  "card": {
+   "file": "farmasi-obat-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 15230
+  }
+ },
+ "farmasi-pelanggan": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFA//EAB4QAAICAQUBAAAAAAAAAAAAAAECAAMRBBIhIlEx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIR/9oADAMBAAIRAxEAPwCKKGwVYdiYjUKm2huTLLILaW+A+yPaFQkA7mhzhZpMwvOpwe3A8hGNZYgwVBhAP//Z",
+  "variants": {
+   "480": {
+    "file": "farmasi-pelanggan-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 9612
+   },
+   "800": {
+    "file": "farmasi-pelanggan-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 19874
+   },
+   "1200": {
+    "file": "farmasi-pelanggan-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 37624
+   }
+  },
+  "card": {
+   "file": "farmasi-pelanggan-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 17992
+  }
+ },
+ "farmasi-rak": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EACAQAAICAgICAwAAAAAAAAAAAAECAAMREgQhBRMjMVH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/EABURAQEAAAAAAAAAAAAAAAAAAAAx/9oADAMBAAIRAxEAPwBDyr/ImMEZmvNR+VWmn0q9iTL6/YMq+SJS8dayIwbs6yphKsGpwqtr+wiVl9ll7a9EGEC//9k=",
+  "variants": {
+   "480": {
+    "file": "farmasi-rak-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 17916
+   },
+   "800": {
+    "file": "farmasi-rak-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 36572
+   },
+   "1200": {
+    "file": "farmasi-rak-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 64122
+   }
+  },
+  "card": {
+   "file": "farmasi-rak-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 29592
+  }
+ },
+ "farmasi-susun": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIEAwX/xAAcEAACAgMBAQAAAAAAAAAAAAABAwACBBESQTL/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAEQEh/9oADAMBAAIRAxEAPwDjVUSj63aa4SnrRe99nXkRZ4WQZVgsLKE2Puoca2mwc/bTVteQISbObWmRwKgH0wlA/9k=",
+  "variants": {
+   "480": {
+    "file": "farmasi-susun-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 17626
+   },
+   "800": {
+    "file": "farmasi-susun-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 33450
+   },
+   "1200": {
+    "file": "farmasi-susun-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 55030
+   }
+  },
+  "card": {
+   "file": "farmasi-susun-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 24186
+  }
+ },
+ "hero-apotek": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAG/8QAHxAAAgIBBAMAAAAAAAAAAAAAAQIAAwQFESFBEzGh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/AAasu/Mza/JzsY5qlqsiKepmkvCXKtR79xqxXvrBDQVBWVUwvLrzKIjGLMPsoTTcf//Z",
+  "variants": {
+   "480": {
+    "file": "hero-apotek-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 10550
+   },
+   "800": {
+    "file": "hero-apotek-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 19590
+   },
+   "1200": {
+    "file": "hero-apotek-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 32144
+   }
+  },
+  "card": {
+   "file": "hero-apotek-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 16484
+  }
+ },
+ "hero-tim": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EAB0QAAEFAAMBAAAAAAAAAAAAAAEAAgMEERITITH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/EABYRAQEBAAAAAAAAAAAAAAAAAAABMf/aAAwDAQACEQMRAD8Aj1yHP5lWrlVs1KIBvz0rL13yNeCB5q1VS92RNBwYEQ0lDA6JjjhxCfuXImwEDORQoa//2Q==",
+  "variants": {
+   "480": {
+    "file": "hero-tim-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 15176
+   },
+   "800": {
+    "file": "hero-tim-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 28204
+   },
+   "1200": {
+    "file": "hero-tim-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 46362
+   }
+  },
+  "card": {
+   "file": "hero-tim-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 20032
+  }
+ },
+ "higienis-kapas": {
+  "ar": 1.5101,
+  "w": 1800,
+  "h": 1192,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDBv/EABsQAQACAwEBAAAAAAAAAAAAAAEAAhEhMQMT/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDpCwG2CxM/mW6y6+ZUxmBfSI0GolR//9k=",
+  "variants": {
+   "480": {
+    "file": "higienis-kapas-480.webp",
+    "w": 480,
+    "h": 318,
+    "bytes": 3560
+   },
+   "800": {
+    "file": "higienis-kapas-800.webp",
+    "w": 800,
+    "h": 530,
+    "bytes": 7274
+   },
+   "1200": {
+    "file": "higienis-kapas-1200.webp",
+    "w": 1200,
+    "h": 795,
+    "bytes": 13258
+   }
+  },
+  "card": {
+   "file": "higienis-kapas-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 7254
+  }
+ },
+ "higienis-sabun": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBBQb/xAAeEAACAgICAwAAAAAAAAAAAAABAgADBBEFEiEiJf/EABUBAQEAAAAAAAAAAAAAAAAAAAMC/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAExAhL/2gAMAwEAAhEDEQA/AGVy6u46+dxw2hiuhMti2itezH2Ebx+WdrwpOljrqgtYiK7nB9JtQkcrYLMxiDsQgulqH//Z",
+  "variants": {
+   "480": {
+    "file": "higienis-sabun-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 9088
+   },
+   "800": {
+    "file": "higienis-sabun-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 17346
+   },
+   "1200": {
+    "file": "higienis-sabun-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 30442
+   }
+  },
+  "card": {
+   "file": "higienis-sabun-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 16882
+  }
+ },
+ "higienis-sanitizer": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EAB8QAAICAQUBAQAAAAAAAAAAAAECAAQDBREhMYESMv/EABYBAQEBAAAAAAAAAAAAAAAAAAMCBP/EABkRAAMBAQEAAAAAAAAAAAAAAAABAhESIf/aAAwDAQACEQMRAD8An06ZsKSOxG10Zvglm2MUpXGwNx1KTaghTct5DSTNd1cvESLVU4W2PMJvbtrk/K+wkVmjx1z6j//Z",
+  "variants": {
+   "480": {
+    "file": "higienis-sanitizer-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 11000
+   },
+   "800": {
+    "file": "higienis-sanitizer-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 23222
+   },
+   "1200": {
+    "file": "higienis-sanitizer-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 42328
+   }
+  },
+  "card": {
+   "file": "higienis-sanitizer-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 23590
+  }
+ },
+ "higienis-sikat": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwb/xAAcEAEAAwACAwAAAAAAAAAAAAABAAIDETEUIUH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABcRAAMBAAAAAAAAAAAAAAAAAAABEVH/2gAMAwEAAhEDEQA/ANBS7klLvt6lF8tfJLHUd1yrojbsk8SZo0XTV2PhCMQlJQGz/9k=",
+  "variants": {
+   "480": {
+    "file": "higienis-sikat-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 7328
+   },
+   "800": {
+    "file": "higienis-sikat-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 15542
+   },
+   "1200": {
+    "file": "higienis-sikat-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 27612
+   }
+  },
+  "card": {
+   "file": "higienis-sikat-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 14128
+  }
+ },
+ "ibuprofen": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQA/8QAHhAAAgICAgMAAAAAAAAAAAAAAQIAAxEhEjETIkH/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAgP/xAAZEQEBAAMBAAAAAAAAAAAAAAABAAIRITH/2gAMAwEAAhEDEQA/AKlYiwB+jKam5KUO5EyHBGdjqNSxIVhoiQOIWqKx8fHcy/DNHs9jkjc0NlrfJJ52/9k=",
+  "variants": {
+   "480": {
+    "file": "ibuprofen-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 23188
+   },
+   "800": {
+    "file": "ibuprofen-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 59582
+   },
+   "1200": {
+    "file": "ibuprofen-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 117670
+   }
+  },
+  "card": {
+   "file": "ibuprofen-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 63514
+  }
+ },
+ "konsul-apoteker": {
+  "ar": 1.5025,
+  "w": 1800,
+  "h": 1198,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMGBf/EACAQAAEEAQQDAAAAAAAAAAAAAAEAAgMEEQUSEyEiI2H/xAAVAQEBAAAAAAAAAAAAAAAAAAAABP/EABgRAQEBAQEAAAAAAAAAAAAAAAEAEQIS/9oADAMBAAIRAxEAPwB1md8LY+PDQtehqTTGIwPIDtSWpyP5GDJACdFaNUskJJDh2pjeQqEGo235xcdub6kJFG0y3VywdfUJqTyN/9k=",
+  "variants": {
+   "480": {
+    "file": "konsul-apoteker-480.webp",
+    "w": 480,
+    "h": 319,
+    "bytes": 29130
+   },
+   "800": {
+    "file": "konsul-apoteker-800.webp",
+    "w": 800,
+    "h": 532,
+    "bytes": 61352
+   },
+   "1200": {
+    "file": "konsul-apoteker-1200.webp",
+    "w": 1200,
+    "h": 799,
+    "bytes": 111702
+   }
+  },
+  "card": {
+   "file": "konsul-apoteker-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 55156
+  }
+ },
+ "konsul-obat": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBAgQG/8QAHBAAAgICAwAAAAAAAAAAAAAAAQIAEQMhEiJR/8QAFwEAAwEAAAAAAAAAAAAAAAAAAgMEBf/EABgRAQADAQAAAAAAAAAAAAAAAAEAAhED/9oADAMBAAIRAxEAPwDoV3JIyBq469lEbtNGUM4DDVCZnChfdlF1ImEUlrdmzCItg4Qyf//Z",
+  "variants": {
+   "480": {
+    "file": "konsul-obat-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 5304
+   },
+   "800": {
+    "file": "konsul-obat-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 10892
+   },
+   "1200": {
+    "file": "konsul-obat-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 19746
+   }
+  },
+  "card": {
+   "file": "konsul-obat-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 12252
+  }
+ },
+ "kulit-losion": {
+  "ar": 0.8,
+  "w": 1800,
+  "h": 2250,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAeABgDASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAQCAwEFBv/EAB8QAAIDAAICAwAAAAAAAAAAAAECAAMRBRIEMRMhcf/EABgBAAIDAAAAAAAAAAAAAAAAAAABAgME/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAEREv/aAAwDAQACEQMRAD8A6BaJP4fqXkhZh7FROx9RNPRWyoZCWWOGXR6hBJrW5G7oS9efkhdzNbUBCDsmy6MPoxQ+DUzdsjV4Z8bkazTjHIRZq0QdQohA9sf/2Q==",
+  "variants": {
+   "480": {
+    "file": "kulit-losion-480.webp",
+    "w": 480,
+    "h": 600,
+    "bytes": 25450
+   },
+   "800": {
+    "file": "kulit-losion-800.webp",
+    "w": 800,
+    "h": 1000,
+    "bytes": 52240
+   },
+   "1200": {
+    "file": "kulit-losion-1200.webp",
+    "w": 1200,
+    "h": 1500,
+    "bytes": 89620
+   }
+  },
+  "card": {
+   "file": "kulit-losion-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 29610
+  }
+ },
+ "kulit-pelembap": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDBAX/xAAgEAACAgEFAAMAAAAAAAAAAAABAgADBBESISIxQVFx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABcRAQEBAQAAAAAAAAAAAAAAAAEAAhH/2gAMAwEAAhEDEQA/AOplUl31U6GTpSxLdrjqfmaSC3PkWQjtWCnOn1A5GZrlbGqWsdR7CLB3hTvBH7CMhf/Z",
+  "variants": {
+   "480": {
+    "file": "kulit-pelembap-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 6804
+   },
+   "800": {
+    "file": "kulit-pelembap-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 13268
+   },
+   "1200": {
+    "file": "kulit-pelembap-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 22154
+   }
+  },
+  "card": {
+   "file": "kulit-pelembap-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 12018
+  }
+ },
+ "kulit-tabir": {
+  "ar": 0.5625,
+  "w": 1800,
+  "h": 3200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAArABgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgUD/8QAHhAAAgICAwEBAAAAAAAAAAAAAAECEQMxBBIhFEH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANeOa0XUpS0hrFwIw36d44Yx0ihFYJy34A+4gBGRTbtOkDn6q0WyexaRxllWOHWrYE5MtVQFYw7RXYAM+PPyVsPsldtIRg/CWwrQXPf6gM5sAP/Z",
+  "variants": {
+   "480": {
+    "file": "kulit-tabir-480.webp",
+    "w": 480,
+    "h": 853,
+    "bytes": 6642
+   },
+   "800": {
+    "file": "kulit-tabir-800.webp",
+    "w": 800,
+    "h": 1422,
+    "bytes": 14712
+   },
+   "1200": {
+    "file": "kulit-tabir-1200.webp",
+    "w": 1200,
+    "h": 2133,
+    "bytes": 28452
+   }
+  },
+  "card": {
+   "file": "kulit-tabir-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 7444
+  }
+ },
+ "multivitamin": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEBQb/xAAgEAACAgEEAwEAAAAAAAAAAAABAgADBBESE0EFIVEx/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//EABgRAAMBAQAAAAAAAAAAAAAAAAABEQIh/9oADAMBAAIRAxEAPwBmH5PKa0c6AKfkozQ6vuRSwaYlWS12SqVsCoPU6AWHg0PQmdc6W5eD8NtlA1/YSSm8l9i+/sIZ3UJqH//Z",
+  "variants": {
+   "480": {
+    "file": "multivitamin-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 16500
+   },
+   "800": {
+    "file": "multivitamin-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 31594
+   },
+   "1200": {
+    "file": "multivitamin-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 53092
+   }
+  },
+  "card": {
+   "file": "multivitamin-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 27424
+  }
+ },
+ "paracetamol": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAECBAMG/8QAHRAAAgICAwEAAAAAAAAAAAAAAAECAwQREhNBMf/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAZEQEBAAMBAAAAAAAAAAAAAAAAARESITH/2gAMAwEAAhEDEQA/APYIsQiUMgEgAz41qvhyRN1vX6YMC51S63FrZryFGyLXpnbtOKnPXftSgmwYq1LjqT+A0wlSP3fp02wBGbAAB//Z",
+  "variants": {
+   "480": {
+    "file": "paracetamol-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 16860
+   },
+   "800": {
+    "file": "paracetamol-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 31974
+   },
+   "1200": {
+    "file": "paracetamol-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 52328
+   }
+  },
+  "card": {
+   "file": "paracetamol-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 18180
+  }
+ },
+ "sign-apotek": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAAAAQFAQIDBv/EACMQAAICAgEEAgMAAAAAAAAAAAECAAMEEQUSEyExMkFRcYH/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQD/xAAWEQEBAQAAAAAAAAAAAAAAAAAAASH/2gAMAwEAAhEDEQA/AM8hhv32sq8j7iq1GvV4GiPYlezLrpLq/wBmcLK0txWcQtZiFnXI162KPcInnh1tRFMIkej5enrtbo86PqPccinBZLPB/EX5u8YLOwXZJkGjkrWyQ3WdE+oCtVMnjUsY7/hhHEcFQzHe4S2jFLk8aq4HuIG/cn1cXifLtDYhCaq3dFXXSNaEIQkjP//Z",
+  "variants": {
+   "480": {
+    "file": "sign-apotek-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 60234
+   },
+   "800": {
+    "file": "sign-apotek-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 138908
+   },
+   "1200": {
+    "file": "sign-apotek-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 264614
+   }
+  },
+  "card": {
+   "file": "sign-apotek-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 57134
+  }
+ },
+ "sign-resep": {
+  "ar": 1.5,
+  "w": 1800,
+  "h": 1200,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAQABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBv/EAB4QAAEEAgMBAAAAAAAAAAAAAAIAAQMEBRESITET/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwAB/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAECEUH/2gAMAwEAAhEDEQA/AM9XxsMoM7n2mvho9b5pMVgg88TSvk7aUmayW3jxgbouSFQE8Zk30ZCRRvQnOsP/2Q==",
+  "variants": {
+   "480": {
+    "file": "sign-resep-480.webp",
+    "w": 480,
+    "h": 320,
+    "bytes": 30834
+   },
+   "800": {
+    "file": "sign-resep-800.webp",
+    "w": 800,
+    "h": 533,
+    "bytes": 69480
+   },
+   "1200": {
+    "file": "sign-resep-1200.webp",
+    "w": 1200,
+    "h": 800,
+    "bytes": 124142
+   }
+  },
+  "card": {
+   "file": "sign-resep-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 58624
+  }
+ },
+ "vitamin-c": {
+  "ar": 1.3333,
+  "w": 1800,
+  "h": 1350,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUGAwT/xAAjEAABBAIBAwUAAAAAAAAAAAABAAIDEQQFIRITFDFBcYGR/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAIDAf/EABoRAQEAAgMAAAAAAAAAAAAAAAEAAjERIUH/2gAMAwEAAhEDEQA/AKOv2EebH1R/i6Zsfex3MurCi6vIhZBcADbVITFw9bSq+VQ5s+zXzeSWS8sHuiuktunEAoicA6sdE4iFtEj7Wh1LiYuSSiIpY7vHuXOGSKcR8FERbGW7/9k=",
+  "variants": {
+   "480": {
+    "file": "vitamin-c-480.webp",
+    "w": 480,
+    "h": 360,
+    "bytes": 9400
+   },
+   "800": {
+    "file": "vitamin-c-800.webp",
+    "w": 800,
+    "h": 600,
+    "bytes": 22786
+   },
+   "1200": {
+    "file": "vitamin-c-1200.webp",
+    "w": 1200,
+    "h": 900,
+    "bytes": 41148
+   }
+  },
+  "card": {
+   "file": "vitamin-c-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 18504
+  }
+ },
+ "vitamin-d3": {
+  "ar": 0.6667,
+  "w": 1800,
+  "h": 2700,
+  "lqip": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAAkABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQDAv/EACAQAAICAgICAwAAAAAAAAAAAAABAhEDEiExBCMyM4H/xAAYAQEBAAMAAAAAAAAAAAAAAAAAAgEDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAABESH/2gAMAwEAAhEDEQA/AKp4pQZt48ZJWzaKU/kjrIvW9FyjY5ZtjOUFMHGBSp7AI2zkPHnaXf6UrkjxupNbFMXQXuUycddgNbAGoVkacarksj9dgCFLoAFMv//Z",
+  "variants": {
+   "480": {
+    "file": "vitamin-d3-480.webp",
+    "w": 480,
+    "h": 720,
+    "bytes": 20438
+   },
+   "800": {
+    "file": "vitamin-d3-800.webp",
+    "w": 800,
+    "h": 1200,
+    "bytes": 52840
+   },
+   "1200": {
+    "file": "vitamin-d3-1200.webp",
+    "w": 1200,
+    "h": 1800,
+    "bytes": 94146
+   }
+  },
+  "card": {
+   "file": "vitamin-d3-card.webp",
+   "w": 600,
+   "h": 600,
+   "bytes": 24078
+  }
+ }
+}
