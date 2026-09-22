@@ -66,35 +66,43 @@
 
 /* --- kisi produk -------------------------------------------------- */
 .pgrid{
-  display:grid;gap:0;
+  display:grid;
+  /* kartu sekarang punya batas visual sendiri, jadi butuh jarak antar kartu.
+     Sebelumnya gap 0px: pemisahnya cuma hairline di sisi kanan+bawah. */
+  gap:var(--s-4);
   grid-template-columns:repeat(2,minmax(0,1fr));
 }
 @media (min-width:620px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (min-width:1180px){.pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
-/* Kartu = satu label rak. Isi kartu punya gutter kiri DAN kanan yang sama,
-   jadi foto serta semua teks duduk di satu kolom 200px; sebelumnya foto
-   200px sementara teks hanya 186px (padding kanan doang), tepi kanannya
-   tidak pernah lurus dengan foto di atasnya. */
+/* Kartu = SATU kotak utuh. Versi sebelumnya hanya bergaris di sisi KANAN dan
+   BAWAH, latarnya sama dengan halaman, dan tidak punya padding kiri — foto
+   menempel di tepi kiri kartu. Terukur: foto x=410.5 = kartu x=410.5 (padding
+   kiri 0px) padahal padding kanan 16px. Hasilnya terbaca seperti potongan
+   struk, bukan kartu.
+   Aturan sekarang: SATU nilai padding di .pcard; tidak ada anak yang boleh
+   mendeklarasikan padding sendiri, jadi semua isi kartu duduk tepat di
+   card.x+12 (kiri) dan card.x+card.w-12 (kanan). */
 .pcard{
   display:grid;grid-template-rows:auto 1fr;
-  border-bottom:var(--hair);border-right:var(--hair);
-  padding:0 0 var(--s-4);min-width:0;
+  padding:var(--s-3);
+  background:var(--card);
+  /* --rule-2 (bukan --rule): tepi kartu harus terbaca sebagai tepi.
+     --rule hanya 1.32:1 di atas --paper, praktis hilang. */
+  border:1px solid var(--rule-2);border-radius:var(--r);
+  min-width:0;
 }
-/* hapus garis kanan pada kolom terakhir tiap baris */
-.pgrid>.pcard:nth-child(2n){border-right:0}
-@media (min-width:620px){.pgrid>.pcard:nth-child(2n){border-right:var(--hair)}.pgrid>.pcard:nth-child(3n){border-right:0}}
-@media (min-width:1180px){.pgrid>.pcard:nth-child(3n){border-right:var(--hair)}.pgrid>.pcard:nth-child(4n){border-right:0}}
-
 .pcard[hidden]{display:none}
 
-.pcard__foto{position:relative;padding:var(--s-4) var(--s-4) var(--s-3) 0}
+.pcard__foto{position:relative}
 .pcard__img{
   width:100%;aspect-ratio:1/1;object-fit:cover;
   border:var(--hair);border-radius:var(--r);background:var(--sand);
 }
+/* tag status = tab yang MENEMPEL di tepi bawah foto, bukan melayang.
+   Terukur sebelumnya: tag y=284 sementara dasar foto y=330 — melayang 46px. */
 .pcard__tag{
-  position:absolute;left:0;bottom:12px;
+  position:absolute;left:0;bottom:0;
   background:var(--ink);color:#fff;
   font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.08em;text-transform:uppercase;
   padding:4px 8px;border-radius:0 var(--r) var(--r) 0;
@@ -103,31 +111,39 @@
    Sebelumnya grid + align-content:start membuat kaki menempel tepat di bawah
    deskripsi, jadi HARGA antar kartu dalam satu baris meleset sampai 24px
    (terukur: nama 1 baris vs 2 baris di baris kisi yang sama). */
-.pcard__body{display:flex;flex-direction:column;gap:var(--s-1);padding-right:var(--s-4);min-width:0}
+.pcard__body{display:flex;flex-direction:column;gap:var(--s-2);padding-top:var(--s-3);min-width:0}
 .pcard__code{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 .pcard__nama{font-size:var(--fs-card);font-weight:600;line-height:24px;overflow-wrap:anywhere}
 .pcard__desc{font-size:var(--fs-sm);color:var(--muted);line-height:21px}
+/* harga dan aksi ditumpuk: satu kolom, bukan baris sempit. Di 1440 kartu hanya
+   selebar 219px — harga di kiri + dua aksi di kanan tidak akan pernah muat
+   tanpa memotong teks. */
 .pcard__foot{
-  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;
-  gap:var(--s-2) var(--s-3);
-  margin-top:auto;padding-top:var(--s-2);border-top:var(--hair);min-width:0;
+  display:flex;flex-direction:column;align-items:stretch;
+  gap:var(--s-3);margin-top:auto;padding-top:var(--s-3);
+  border-top:var(--hair);min-width:0;
 }
 .pcard__harga{font-family:var(--mono);font-size:var(--fs-body);font-weight:600}
-.pcard__acts{display:inline-flex;align-items:center;gap:var(--s-4);flex-wrap:wrap;justify-content:flex-end;min-width:0}
-.pcard__more{
-  /* 44px: target sentuh minimum. padding-block, bukan min-height saja, supaya
-     teks benar-benar di tengah kotak 44px (bukan menempel di atas). */
-  display:inline-flex;align-items:center;min-height:44px;padding-block:9px;
-  background:none;border:0;padding-inline:0;cursor:pointer;
-  font-size:var(--fs-sm);color:var(--muted);border-bottom:1px dotted var(--rule-2);
+/* dua aksi = dua tombol yang benar-benar terlihat sebagai tombol. Versi
+   sebelumnya keduanya cuma teks bergaris bawah (dotted/solid): NOL dari dua
+   aksi punya batas visual. white-space:nowrap + flex-wrap membuat tombol
+   turun jadi dua baris penuh saat kartu sempit, bukan memotong kata. */
+.pcard__acts{display:flex;flex-wrap:wrap;gap:var(--s-2);min-width:0}
+.pcard__more,.pcard__cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:1 1 auto;white-space:nowrap;
+  min-height:44px;padding:0 var(--s-2);
+  /* --rule-3: --rule-2 hanya 1.86:1 di atas --card, di bawah 3:1 yang
+     diminta WCAG 1.4.11 untuk batas kontrol. */
+  border:1px solid var(--rule-3);border-radius:var(--r);
+  font-size:var(--fs-sm);cursor:pointer;text-decoration:none;background:none;
 }
-.pcard__more:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.pcard__more{color:var(--ink-2)}
+.pcard__more:hover{border-color:var(--ink);color:var(--ink)}
 .pcard__cta{
-  display:inline-flex;align-items:center;min-height:44px;padding-block:9px;
-  font-size:var(--fs-sm);font-weight:600;color:var(--green);text-decoration:none;
-  border-bottom:1px solid currentColor;
+  background:var(--green);border-color:var(--green);color:#fff;font-weight:600;
 }
-.pcard__cta:hover{color:var(--green-d)}
+.pcard__cta:hover{background:var(--green-d);border-color:var(--green-d)}
 
 /* keadaan kosong hasil pencarian */
 .cat__empty{
@@ -148,16 +164,10 @@
 .cat__more button:hover{background:var(--ink);color:#fff}
 .cat__more[hidden]{display:none}
 
+/* Kartu 2 kolom di bawah 620px: kartu jadi sempit (±150px), jadi padding
+   diturunkan ke 8px. Ini SATU-SATUNYA tempat padding kartu berubah — anak
+   kartu tetap tidak boleh punya padding sendiri. */
 @media (max-width:619px){
-  /* kartu 2 kolom: rapatkan sedikit, deskripsi tetap tampil (grid menyamakan
-     tinggi kartu per baris, jadi garis bawahnya tetap lurus) */
-  .pcard__foto{padding:var(--s-3) var(--s-3) var(--s-2) 0}
-  .pcard__body{padding-right:var(--s-3)}
-  .pcard__tag{bottom:10px}
+  .pcard{padding:var(--s-2)}
 }
 
-@media (max-width:400px){
-  /* di bawah 400px: harga pindah baris sendiri, aksi tetap sejajar */
-  .pcard__foot{justify-content:flex-start}
-  .pcard__acts{width:100%;justify-content:flex-start;gap:var(--s-3)}
-}
