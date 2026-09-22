@@ -14,70 +14,76 @@
 .masthead__in{
   display:flex;align-items:center;gap:clamp(10px,2vw,28px);
   min-height:64px;
-  padding-block:9px;
+  padding-block:var(--s-2);
 }
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.brand{display:flex;align-items:center;gap:var(--s-3);text-decoration:none;margin-right:auto}
 .brand__mark{
   display:grid;place-items:center;flex:0 0 auto;
-  width:38px;height:38px;border-radius:var(--r);
+  width:40px;height:40px;border-radius:var(--r);
   background:var(--green);color:#fff;
-  font-family:var(--mono);font-weight:600;font-size:1rem;letter-spacing:-.02em;
+  font-family:var(--mono);font-weight:600;font-size:var(--fs-body);letter-spacing:-.02em;
 }
-.brand__txt{display:grid;line-height:1.15}
-.brand__txt b{font-size:1.02rem;letter-spacing:-.02em}
-.brand__txt span{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.brand__txt{display:grid;line-height:20px}
+.brand__txt b{font-size:var(--fs-body);letter-spacing:-.02em}
+.brand__txt span{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
 .navlinks{display:flex;gap:clamp(12px,1.6vw,24px);align-items:center}
 .navlinks a{
-  text-decoration:none;font-size:.92rem;font-weight:500;color:var(--ink-2);
-  padding-block:4px;border-bottom:1px solid transparent;
+  text-decoration:none;font-size:var(--fs-sm);font-weight:500;color:var(--ink-2);
+  padding-block:var(--s-1);border-bottom:1px solid transparent;
 }
 .navlinks a:hover{color:var(--ink);border-bottom-color:var(--ink)}
-.masthead__cta{display:flex;align-items:center;gap:10px}
-.masthead__cta .btn{min-height:42px;padding:9px 15px}
+.masthead__cta{display:flex;align-items:center;gap:var(--s-2)}
+.masthead__cta .btn{min-height:44px;padding:10px 16px}
 
 /* status buka/tutup — teks mono kecil dengan titik, bukan badge berwarna */
-.status{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
-.status__dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:0 0 auto}
+.status{display:inline-flex;align-items:center;gap:var(--s-2);font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.04em}
+.status__dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:0 0 auto}
 .status.is-closed .status__dot{background:#a8442f}
 
 /* --- blok pembuka ------------------------------------------------ */
-.open{padding-block:clamp(26px,3.2vw,44px) clamp(28px,3.4vw,46px)}
-.open__grid{display:grid;gap:clamp(22px,3vw,44px);align-items:start}
+.open{padding-block:clamp(28px,3.2vw,44px) clamp(28px,3.4vw,48px)}
+.open__grid{display:grid;gap:clamp(24px,3vw,44px);align-items:start}
 @media (min-width:900px){
   .open__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
 }
-.open__kicker{margin-bottom:12px}
-.open h1{max-width:22ch;font-size:clamp(1.95rem,4.4vw,3.5rem)}
-.open__lede{margin-top:15px;max-width:48ch}
-.open__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+/* h1 di sini mewarisi skala h1 dasar — jangan ditimpa, supaya judul
+   pembuka dan judul section tidak diam-diam beda ukuran */
+.open__kicker{margin-bottom:var(--s-3)}
+.open__lede{margin-top:var(--s-4);max-width:52ch}
+.open__cta{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-6)}
 
 /* pencarian di papan pembuka — di atas lipatan, menyaring katalog yang sama */
-.open__cari{margin-top:22px;display:grid;gap:7px;max-width:440px}
-.open__cariNote{font-size:.82rem;color:var(--muted)}
+.open__cari{margin-top:var(--s-6);display:grid;gap:var(--s-2);max-width:440px}
+.open__cariNote{font-size:var(--fs-meta);color:var(--muted)}
 
 /* daftar fakta operasional: baris mono dengan pemisah hairline */
-.facts{border-top:var(--hair);margin-top:22px}
-.facts__row{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-bottom:var(--hair)}
-.facts__k{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex:0 0 7.6em}
-.facts__v{font-size:.95rem;font-weight:500}
+.facts{border-top:var(--hair);margin-top:var(--s-6)}
+.facts__row{display:flex;gap:var(--s-4);align-items:baseline;padding:var(--s-2) 0;border-bottom:var(--hair)}
+.facts__k{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex:0 0 8em}
+.facts__v{font-size:var(--fs-body);font-weight:500}
 
 /* papan bukti: kisi kategori + foto — ini yang menggantikan "hero shot" */
 .board{background:var(--card);border:var(--hair);border-radius:var(--r)}
-.board__head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-bottom:var(--hair)}
-.board__body{padding:14px}
+.board__head{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-4);border-bottom:var(--hair)}
+.board__body{padding:var(--s-4)}
 .board__cats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:var(--hair)}
-.board__cats span{background:var(--card);padding:9px 11px;font-size:.84rem;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-.board__cats b{font-family:var(--mono);font-size:.8rem;color:var(--green)}
-.board__shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.board__cats span{background:var(--card);padding:10px 12px;font-size:var(--fs-sm);display:flex;justify-content:space-between;gap:var(--s-2);align-items:baseline}
+.board__cats b{font-family:var(--mono);font-size:var(--fs-meta);color:var(--green)}
+.board__shots{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin-top:var(--s-4)}
 .board__shots img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r);border:var(--hair)}
-.board__foot{padding:12px 14px;border-top:var(--hair);font-size:.88rem;color:var(--muted)}
+.board__foot{padding:var(--s-3) var(--s-4);border-top:var(--hair);font-size:var(--fs-sm);color:var(--muted)}
 
 /* baris fakta penuh lebar di bawah blok pembuka */
 .strip{border-block:var(--hair);background:var(--card)}
-.strip__in{display:flex;flex-wrap:wrap;gap:10px clamp(18px,3vw,40px);padding-block:14px;align-items:baseline}
-.strip__in span{font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
+.strip__in{display:flex;flex-wrap:wrap;gap:var(--s-2) clamp(18px,3vw,40px);padding-block:var(--s-3);align-items:baseline}
+.strip__in span{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
 .strip__in b{color:var(--ink)}
+
+/* label tombol versi pendek: hanya dipakai di lebar sempit (lihat bawah).
+   Menyembunyikan status buka/tutup lebih buruk daripada memendekkan label —
+   status itu justru informasi paling penting di baris atas. */
+.btn__mini{display:none}
 
 @media (max-width:880px){
   .navlinks{display:none}
@@ -85,5 +91,13 @@
 @media (max-width:560px){
   .brand__txt span{display:none}
   .masthead__cta .btn--ghost{display:none}
-  .facts__k{flex-basis:6.4em}
+  .facts__k{flex-basis:6.5em}
+}
+/* di bawah 400px baris atas tidak lagi muat dengan label penuh
+   (terukur butuh 308px dari 284px yang tersedia) */
+@media (max-width:400px){
+  .btn__full{display:none}
+  .btn__mini{display:inline}
+  .brand__mark{width:36px;height:36px}
+  .masthead__in{gap:8px}
 }
