@@ -184,13 +184,9 @@
     }
 
     kartu.forEach(function(k){
-      k.addEventListener("click", function(ev){
-        if (ev.target.closest("a")) return;      // biarkan tautan WhatsApp jalan
-        buka(k);
-      });
-      var m = k.querySelector(".pcard__more");
+      var m = k.querySelector(".pcard__buka");
       if (m) m.addEventListener("click", function(ev){
-        ev.stopPropagation();                    // jangan buka dua kali
+        ev.stopPropagation();
         buka(k);
       });
     });

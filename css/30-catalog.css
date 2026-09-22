@@ -72,8 +72,14 @@
   gap:var(--s-4);
   grid-template-columns:repeat(2,minmax(0,1fr));
 }
-@media (min-width:620px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (min-width:1180px){.pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* Di atas 620px: kolom mengisi lebar yang tersedia, tapi tidak pernah lebih
+   sempit dari 240px. Kenapa 240px — di bawah itu deskripsi jadi 3 baris dan
+   kedua aksi tidak muat sebaris. Versi breakpoint tetap (2/3/4) memberi kartu
+   cuma 200px di 960px karena rail 216px + gap 40px memakan ruang, padahal
+   viewport-nya lebar; auto-fill menghitungnya sendiri.
+   Hasil ukur di 1440: kartu 297px (dulu 203px), foto 53% tinggi kartu (dulu
+   37.4%), kaki kartu 57px satu baris (dulu 88px dua baris). */
+@media (min-width:620px){.pgrid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}}
 
 /* Kartu = SATU kotak utuh. Versi sebelumnya hanya bergaris di sisi KANAN dan
    BAWAH, latarnya sama dengan halaman, dan tidak punya padding kiri — foto
@@ -91,10 +97,30 @@
      --rule hanya 1.32:1 di atas --paper, praktis hilang. */
   border:1px solid var(--rule-2);border-radius:var(--r);
   min-width:0;
+  /* Kartu TIDAK lagi jadi target klik: pengikatnya dipindah ke tombol foto.
+     Klik di mana pun pada kartu membuat pemilihan teks (harga, deskripsi)
+     ikut membuka dialog — mengganggu. Kursor normal; hover tetap memberi
+     isyarat bahwa kartu itu satu unit. */
+  transition:border-color .12s ease, box-shadow .12s ease;
 }
+.pcard:hover{border-color:var(--ink-2);box-shadow:0 1px 0 0 var(--rule-2)}
+@media (prefers-reduced-motion:reduce){.pcard{transition:none}}
+.pcard:has(.pcard__buka:focus-visible){border-color:var(--green-d)}
 .pcard[hidden]{display:none}
 
 .pcard__foto{position:relative}
+/* Tombol foto: SELURUH foto jadi satu target klik besar untuk membuka panel
+   keterangan. Dulu ada tombol teks "Keterangan" di kaki kartu — terukur
+   mubazir: pada kartu 250px harga (90px) + "Keterangan" (71px) + "Cek stok"
+   (110px) tidak muat sebaris, jadi kaki kartu pecah dua baris (harga y=1658,
+   aksi y=1692) dan tinggi kartu naik 91px. Sebagai tombol, foto memberi target
+   ±250x250 (jauh di atas 44px) dan tetap bisa dijangkau Tab.
+   Tombol tidak boleh punya border/padding bawaan browser. */
+.pcard__buka{
+  display:block;width:100%;padding:0;border:0;background:none;
+  cursor:pointer;border-radius:var(--r);
+}
+.pcard__buka:focus-visible{outline:2px solid var(--green-d);outline-offset:2px}
 .pcard__img{
   width:100%;aspect-ratio:1/1;object-fit:cover;
   border:var(--hair);border-radius:var(--r);background:var(--sand);
@@ -113,35 +139,43 @@
    (terukur: nama 1 baris vs 2 baris di baris kisi yang sama). */
 .pcard__body{display:flex;flex-direction:column;gap:var(--s-2);padding-top:var(--s-3);min-width:0}
 .pcard__code{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.pcard__nama{font-size:var(--fs-card);font-weight:600;line-height:24px;overflow-wrap:anywhere}
-.pcard__desc{font-size:var(--fs-sm);color:var(--muted);line-height:21px}
-/* harga dan aksi ditumpuk: satu kolom, bukan baris sempit. Di 1440 kartu hanya
-   selebar 219px — harga di kiri + dua aksi di kanan tidak akan pernah muat
-   tanpa memotong teks. */
+.pcard__nama{font-size:var(--fs-card);font-weight:600;line-height:24px;overflow-wrap:anywhere;
+  /* Nama produk 1, 2, atau 3 baris (terukur: 14/8/1 dari 23 produk). Dengan
+     tinggi 2 baris dikunci, ruang sisa penyerapan `margin-top:auto` di kaki
+     kartu selalu sama di semua kartu — sebelumnya jarak deskripsi→kaki
+     berbeda 8px vs 32px karena nama 1 baris vs 2 baris. Nama 3 baris tetap
+     muat: 3×24=72px, lebih kecil dari 2×24 + jarak = 80px. */
+  min-height:48px;display:flex;align-items:flex-start;
+}
+/* Deskripsi dipotong 2 baris: teks penuh sudah ada di panel keterangan, jadi
+   mengulang 3 baris di kartu hanya memanjangkan halaman (terukur sebelum ini:
+   5.9 layar di desktop, 10.9 layar di HP). */
+.pcard__desc{
+  font-size:var(--fs-sm);color:var(--muted);line-height:21px;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;
+}
+/* harga kiri + "Cek stok" kanan dalam SATU baris. Terukur: dengan kartu 250px,
+   isi kaki = harga 90px + celah 16px + tombol 110px = 216px — muat. Versi
+   sebelumnya juga memuat tombol teks "Keterangan" (71px) sehingga totalnya
+   303px > 250px, flex-wrap memecah kaki jadi dua baris (harga y=1658, aksi
+   y=1692) dan kartu jadi 91px lebih tinggi tanpa alasan. flex-wrap tetap ada
+   sebagai jaring pengaman untuk kartu yang sangat sempit. */
 .pcard__foot{
-  display:flex;flex-direction:column;align-items:stretch;
-  gap:var(--s-3);margin-top:auto;padding-top:var(--s-3);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:var(--s-2) var(--s-3);
+  margin-top:auto;padding-top:var(--s-3);
   border-top:var(--hair);min-width:0;
 }
 .pcard__harga{font-family:var(--mono);font-size:var(--fs-body);font-weight:600}
-/* dua aksi = dua tombol yang benar-benar terlihat sebagai tombol. Versi
-   sebelumnya keduanya cuma teks bergaris bawah (dotted/solid): NOL dari dua
-   aksi punya batas visual. white-space:nowrap + flex-wrap membuat tombol
-   turun jadi dua baris penuh saat kartu sempit, bukan memotong kata. */
-.pcard__acts{display:flex;flex-wrap:wrap;gap:var(--s-2);min-width:0}
-.pcard__more,.pcard__cta{
-  display:inline-flex;align-items:center;justify-content:center;
-  flex:1 1 auto;white-space:nowrap;
-  min-height:44px;padding:0 var(--s-2);
-  /* --rule-3: --rule-2 hanya 1.86:1 di atas --card, di bawah 3:1 yang
-     diminta WCAG 1.4.11 untuk batas kontrol. */
-  border:1px solid var(--rule-3);border-radius:var(--r);
-  font-size:var(--fs-sm);cursor:pointer;text-decoration:none;background:none;
-}
-.pcard__more{color:var(--ink-2)}
-.pcard__more:hover{border-color:var(--ink);color:var(--ink)}
+/* SATU aksi di kaki kartu: "Cek stok" (tombol hijau, jalur WhatsApp).
+   Aksi sekunder "Keterangan" dihapus — seluruh foto kini tombol yang membuka
+   panel yang sama, jadi tidak ada dua kontrol untuk satu tindakan. */
 .pcard__cta{
-  background:var(--green);border-color:var(--green);color:#fff;font-weight:600;
+  display:inline-flex;align-items:center;justify-content:center;
+  white-space:nowrap;min-height:44px;
+  font-size:var(--fs-sm);cursor:pointer;text-decoration:none;
+  background:var(--green);border:1px solid var(--green);border-radius:var(--r);
+  padding:0 var(--s-3);color:#fff;font-weight:600;
 }
 .pcard__cta:hover{background:var(--green-d);border-color:var(--green-d)}
 
@@ -164,10 +198,39 @@
 .cat__more button:hover{background:var(--ink);color:#fff}
 .cat__more[hidden]{display:none}
 
-/* Kartu 2 kolom di bawah 620px: kartu jadi sempit (±150px), jadi padding
-   diturunkan ke 8px. Ini SATU-SATUNYA tempat padding kartu berubah — anak
-   kartu tetap tidak boleh punya padding sendiri. */
+/* Di bawah 620px kartu jadi kartu DAFTAR mendatar: foto persegi di kiri,
+   teks di kanan. Alasannya terukur, bukan selera — dengan kisi 2 kolom di
+   390px kartu cuma 171px sehingga (a) foto hanya 32.6% tinggi kartu,
+   (b) harga + "Keterangan" + "Cek stok" tidak muat sebaris dan kaki kartu
+   melar jadi 147px, dan (c) halaman jadi 13.7 layar. Sebagai kartu mendatar
+   teksnya punya lebar penuh ±250px: kaki kembali 1 baris dan halaman turun.
+   Padding 8px di sini SATU-SATUNYA tempat padding kartu berubah. */
 @media (max-width:619px){
-  .pcard{padding:var(--s-2)}
+  .pgrid{grid-template-columns:minmax(0,1fr)}
+  .pcard{
+    padding:var(--s-2);
+    grid-template-columns:96px minmax(0,1fr);
+    grid-template-rows:auto;
+    align-items:start;
+    column-gap:var(--s-3);
+  }
+  /* padding-top anak badan dihapus di sini: jaraknya sekarang datang dari
+     column-gap, jadi tidak ada dua jarak bertumpuk. */
+  .pcard__body{padding-top:0}
+  .pcard__foot{padding-top:var(--s-2)}
+  /* tag menempel di tepi bawah foto. Label terpanjang "Sering dicari" terukur
+     butuh 93px pada 10px/0.04em; foto 88px membuatnya terpotong elipsis.
+     Foto 96px menampungnya bulat tanpa memotong teks. */
+  .pcard__tag{font-size:10px;letter-spacing:.04em;padding:3px 5px;max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+/* Kartu tersempit (≤359px, mis. 320px): ruang teks hanya 164px, sementara
+   harga (90px) + tombol (110px) butuh 200px+ — memaksanya sebaris membuat
+   keduanya saling menghimpit dan kaki kartu tetap melar. Di sini kakinya
+   dibuat DUA baris secara sengaja: harga satu baris, lalu "Cek stok" selebar
+   kolom teks (tombol lebih besar = lebih mudah dijangkau jempol). */
+@media (max-width:359px){
+  .pcard__foot{flex-direction:column;align-items:stretch;gap:var(--s-1)}
+  .pcard__cta{width:100%}
 }
 

@@ -77,17 +77,16 @@ def render_produk():
         tag = f'<span class="pcard__tag">{p["tag"]}</span>' if p["tag"] else ""
         cari = html.escape((p["nama"] + " " + p["desc"] + " " + kode).lower(), quote=True)
         out.append(f'''<article class="pcard" data-kat="{p['kat']}" data-katnama="{nama_kat.get(p['kat'], '')}" data-satuan="{p['satuan']}" data-cari="{cari}">
-  <div class="pcard__foto">{picture(stem, p['nama'], "pcard__img", "(max-width:640px) 46vw, (max-width:1000px) 30vw, 260px", card=True)}{tag}</div>
+  <div class="pcard__foto">
+    <button type="button" class="pcard__buka" aria-label="Lihat keterangan {html.escape(p['nama'], quote=True)}">{picture(stem, p['nama'], "pcard__img", "(max-width:640px) 96px, (max-width:1000px) 30vw, 260px", card=True)}</button>{tag}
+  </div>
   <div class="pcard__body">
     <span class="pcard__code">{kode} &middot; {p['satuan']}</span>
     <h3 class="pcard__nama">{p['nama']}</h3>
     <p class="pcard__desc">{p['desc']}</p>
     <div class="pcard__foot">
       <span class="pcard__harga">{rupiah(p['harga'])}</span>
-      <span class="pcard__acts">
-        <button type="button" class="pcard__more">Keterangan</button>
-        <a class="pcard__cta" href="{wa_link(pesan)}" target="_blank" rel="noopener">Cek stok</a>
-      </span>
+      <a class="pcard__cta" href="{wa_link(pesan)}" target="_blank" rel="noopener">Cek stok</a>
     </div>
   </div>
 </article>''')

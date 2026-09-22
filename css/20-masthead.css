@@ -32,6 +32,10 @@
   text-decoration:none;font-size:var(--fs-sm);font-weight:500;color:var(--ink-2);
   display:inline-flex;align-items:center;min-height:44px;
   padding-block:var(--s-1);border-bottom:1px solid transparent;
+  /* "Cara pesan" terukur membungkus jadi 2 baris di 960px → kotaknya 39x61,
+     lebih sempit dari 44px dan lebih tinggi dari tetangganya. Label navigasi
+     tidak boleh membungkus. */
+  white-space:nowrap;
 }
 .navlinks a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .masthead__cta{display:flex;align-items:center;gap:var(--s-2)}
