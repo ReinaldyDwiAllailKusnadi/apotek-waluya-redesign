@@ -127,6 +127,24 @@
   if (cari){
     cari.addEventListener("input", function(){ semua = false; render(); });
   }
+  /* kolom cari di papan pembuka menyaring katalog yang sama — bukan hasil kedua.
+     Setelah diketik, halaman turun ke katalog supaya hasilnya terlihat. */
+  var cariAtas = document.getElementById("cariAtas");
+  var katalogEl = document.getElementById("katalog");
+  function turunKeKatalog(){
+    if (!katalogEl) return;
+    var kurang = katalogEl.getBoundingClientRect().top;
+    if (kurang > 120){ window.scrollTo({top: window.scrollY + kurang - 78, behavior:"smooth"}); }
+  }
+  if (cariAtas && cari){
+    cariAtas.addEventListener("input", function(){
+      cari.value = cariAtas.value;
+      semua = false;
+      render();
+      if (cariAtas.value.trim()) turunKeKatalog();
+    });
+    cari.addEventListener("input", function(){ cariAtas.value = cari.value; });
+  }
   if (btnLebih){
     btnLebih.addEventListener("click", function(){ semua = true; render(); });
   }

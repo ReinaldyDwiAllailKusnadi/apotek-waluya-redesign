@@ -232,19 +232,23 @@ figure{margin:0}
 .status.is-closed .status__dot{background:#a8442f}
 
 /* --- blok pembuka ------------------------------------------------ */
-.open{padding-block:clamp(30px,4vw,54px) clamp(34px,4.5vw,60px)}
-.open__grid{display:grid;gap:clamp(24px,3.4vw,52px);align-items:start}
+.open{padding-block:clamp(26px,3.2vw,44px) clamp(28px,3.4vw,46px)}
+.open__grid{display:grid;gap:clamp(22px,3vw,44px);align-items:start}
 @media (min-width:900px){
   .open__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
 }
-.open__kicker{margin-bottom:14px}
-.open h1{max-width:22ch}
-.open__lede{margin-top:18px;max-width:48ch}
-.open__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.open__kicker{margin-bottom:12px}
+.open h1{max-width:22ch;font-size:clamp(1.95rem,4.4vw,3.5rem)}
+.open__lede{margin-top:15px;max-width:48ch}
+.open__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+
+/* pencarian di papan pembuka — di atas lipatan, menyaring katalog yang sama */
+.open__cari{margin-top:22px;display:grid;gap:7px;max-width:440px}
+.open__cariNote{font-size:.82rem;color:var(--muted)}
 
 /* daftar fakta operasional: baris mono dengan pemisah hairline */
-.facts{border-top:var(--hair);margin-top:26px}
-.facts__row{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:var(--hair)}
+.facts{border-top:var(--hair);margin-top:22px}
+.facts__row{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-bottom:var(--hair)}
 .facts__k{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex:0 0 7.6em}
 .facts__v{font-size:.95rem;font-weight:500}
 
@@ -595,6 +599,18 @@ figure{margin:0}
         <div class="open__cta">
           <a class="btn btn--green" href="https://wa.me/6281234567890?text=Halo%20Apotek%20Waluya%2C%20saya%20mau%20cek%20stok%20obat." target="_blank" rel="noopener">Cek stok lewat WhatsApp</a>
           <a class="btn btn--ghost" href="#katalog">Lihat katalog</a>
+        </div>
+
+        <!-- Pencarian di atas lipatan: pengunjung yang sudah tahu nama barangnya
+             tidak perlu menggulir dulu untuk mencari. Menyaring katalog yang
+             sama, jadi tidak ada dua sumber hasil. -->
+        <div class="open__cari">
+          <label class="mono-label" for="cariAtas">Cari barang di rak</label>
+          <div class="field">
+            <input id="cariAtas" type="search" placeholder="cth. paracetamol, popok, tensi" autocomplete="off"
+                   aria-describedby="cariAtasCatatan">
+          </div>
+          <p class="open__cariNote" id="cariAtasCatatan">Hasil muncul di katalog di bawah.</p>
         </div>
 
         <div class="facts">
@@ -1359,6 +1375,24 @@ figure{margin:0}
 
   if (cari){
     cari.addEventListener("input", function(){ semua = false; render(); });
+  }
+  /* kolom cari di papan pembuka menyaring katalog yang sama — bukan hasil kedua.
+     Setelah diketik, halaman turun ke katalog supaya hasilnya terlihat. */
+  var cariAtas = document.getElementById("cariAtas");
+  var katalogEl = document.getElementById("katalog");
+  function turunKeKatalog(){
+    if (!katalogEl) return;
+    var kurang = katalogEl.getBoundingClientRect().top;
+    if (kurang > 120){ window.scrollTo({top: window.scrollY + kurang - 78, behavior:"smooth"}); }
+  }
+  if (cariAtas && cari){
+    cariAtas.addEventListener("input", function(){
+      cari.value = cariAtas.value;
+      semua = false;
+      render();
+      if (cariAtas.value.trim()) turunKeKatalog();
+    });
+    cari.addEventListener("input", function(){ cariAtas.value = cari.value; });
   }
   if (btnLebih){
     btnLebih.addEventListener("click", function(){ semua = true; render(); });
